@@ -46,7 +46,7 @@ public class GestorArchivos {
         String contenido = "";
         
         for(int i = 0; i < listado.size(); i++){
-        }
+}
         
         return contenido;
     }
