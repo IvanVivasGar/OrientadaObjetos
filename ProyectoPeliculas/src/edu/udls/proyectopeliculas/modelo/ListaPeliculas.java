@@ -73,6 +73,18 @@ public class ListaPeliculas {
             for(int z = 0; z < i; z++){
                 actual = actual.getSiguiente();
             }
+            
+            toAdd.setSiguiente(actual.getSiguiente());
+            actual.getSiguiente().setAnterior(toAdd);
+            toAdd.setAnterior(actual);
+            actual.setSiguiente(toAdd);
+            
+            actual = toAdd;
+        }else if(i > this.size){
+            toAdd.setAnterior(last);
+            last.setSiguiente(toAdd);
+            toAdd.setSiguiente(null);
+            last = toAdd;
         }
     }
 }
