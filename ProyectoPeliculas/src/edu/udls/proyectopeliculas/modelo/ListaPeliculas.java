@@ -87,4 +87,8 @@ public class ListaPeliculas {
             last = toAdd;
         }
     }
+    
+    public void Remove(String movie){
+        
+    }
 }
