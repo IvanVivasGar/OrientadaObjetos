@@ -9,18 +9,18 @@ package edu.udls.proyectopeliculas.modelo;
  * @author Ivan
  */
 public class Nodo {
-    private String pelicula;
+    private String movie;
     private Nodo anterior;
     private Nodo siguiente;
     
     public Nodo(){}
     
-    public void setPelicula(String pelicula){
-        this.pelicula = pelicula;
+    public void setMovie(String movie){
+        this.movie = movie;
     }
     
-    public String getPelicula(){
-        return this.pelicula;
+    public String getMovie(){
+        return this.movie;
     }
     
     public void setAnterior(Nodo anterior){
