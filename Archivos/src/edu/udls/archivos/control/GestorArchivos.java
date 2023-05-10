@@ -41,13 +41,4 @@ public class GestorArchivos {
         }
         return contenido;
     }
-    
-    public static String removerLinea(ListaPeliculas listado){
-        String contenido = "";
-        
-        for(int i = 0; i < listado.size(); i++){
-}
-        
-        return contenido;
-    }
 }

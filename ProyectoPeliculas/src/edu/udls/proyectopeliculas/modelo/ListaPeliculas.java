@@ -47,7 +47,7 @@ public class ListaPeliculas {
         return msg;
     }
     
-    public void add(String movie, int i){
+    public void add(String movie){
         Nodo toAdd = new Nodo();
         toAdd.setMovie(movie);
         this.actual = toAdd;
@@ -57,30 +57,7 @@ public class ListaPeliculas {
             this.last = toAdd;
             toAdd.setAnterior(null);
             toAdd.setSiguiente(null);
-        }else if(i == 0){
-            toAdd.setSiguiente(first);
-            first.setAnterior(toAdd);
-            toAdd.setAnterior(null);
-            first = toAdd;
-        }else if(i == this.size){
-            toAdd.setAnterior(last);
-            last.setSiguiente(toAdd);
-            toAdd.setSiguiente(null);
-            last = toAdd;
-        }else if(i < this.size && i > 0){
-            actual = first;
-            
-            for(int z = 0; z < i; z++){
-                actual = actual.getSiguiente();
-            }
-            
-            toAdd.setSiguiente(actual.getSiguiente());
-            actual.getSiguiente().setAnterior(toAdd);
-            toAdd.setAnterior(actual);
-            actual.setSiguiente(toAdd);
-            
-            actual = toAdd;
-        }else if(i > this.size){
+        }else{
             toAdd.setAnterior(last);
             last.setSiguiente(toAdd);
             toAdd.setSiguiente(null);
@@ -88,7 +65,9 @@ public class ListaPeliculas {
         }
     }
     
-    public void Remove(String movie){
-        
+    public void move(ListaPeliculas listaA, ListaPeliculas listaB){
+        listaB.add(listaA.actual());
+        listaA.actual.getAnterior().setSiguiente(listaA.actual.getSiguiente());
+        listaA.actual.getSiguiente().setAnterior(listaA.actual.getAnterior());
     }
 }
