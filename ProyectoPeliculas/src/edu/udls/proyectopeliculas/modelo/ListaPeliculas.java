@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package edu.udls.proyectopeliculas.modelo;
 
 /**
@@ -57,11 +53,13 @@ public class ListaPeliculas {
             this.last = toAdd;
             toAdd.setAnterior(null);
             toAdd.setSiguiente(null);
+            size++;
         }else{
             toAdd.setAnterior(last);
             last.setSiguiente(toAdd);
             toAdd.setSiguiente(null);
             last = toAdd;
+            size++;
         }
     }
     
@@ -69,5 +67,30 @@ public class ListaPeliculas {
         listaB.add(listaA.actual());
         listaA.actual.getAnterior().setSiguiente(listaA.actual.getSiguiente());
         listaA.actual.getSiguiente().setAnterior(listaA.actual.getAnterior());
+        listaA.size--;
+        listaB.size++;
+    }
+    
+    public void moveAll(ListaPeliculas listaA, ListaPeliculas listaB){
+        listaA.actual = listaA.first;
+        for(int i = 0; i <= listaA.size(); i++){
+            listaB.add(listaA.actual());
+            listaA.actual.getAnterior().setSiguiente(listaA.actual.getSiguiente());
+            listaA.actual.getSiguiente().setAnterior(listaA.actual.getAnterior());
+            listaA.size--;
+            listaB.size++;
+            listaA.actual = listaA.actual.getSiguiente();
+        }
+    }
+    
+    public String enlist(ListaPeliculas listaA){
+        String relist = "";
+        
+        listaA.actual = listaA.first;
+        for(int i = 0; i <= listaA.size; i++){
+            relist += (i+1) + ". " + listaA.actual.getMovie() + "\n";
+            listaA.actual = listaA.actual.getSiguiente();
+        }
+        return relist;
     }
 }

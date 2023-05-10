@@ -3,13 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package edu.udls.proyectopeliculas.vista;
+import edu.udls.proyectopeliculas.modelo.ListaPeliculas;
 
 /**
  *
  * @author Ivan
  */
 public class Principal extends javax.swing.JFrame {
-
+    ListaPeliculas listaDisponibles = new ListaPeliculas();
+    ListaPeliculas listaRentadas = new ListaPeliculas();
+    
     /**
      * Creates new form Principal
      */
@@ -30,27 +33,31 @@ public class Principal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        txaDisponibles = new javax.swing.JTextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton9 = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
-        jButton10 = new javax.swing.JButton();
+        txaRentadas = new javax.swing.JTextArea();
+        btnInicioDisponibles = new javax.swing.JButton();
+        btnFinDisponibles = new javax.swing.JButton();
+        btnAnteriorDisponibles = new javax.swing.JButton();
+        btnInicioRentadas = new javax.swing.JButton();
+        btnFinRentadas = new javax.swing.JButton();
+        btnAnteriorRentadas = new javax.swing.JButton();
+        btnSiguienteRentadas = new javax.swing.JButton();
+        txtActualDisponibles = new javax.swing.JTextField();
+        txtActualRentadas = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        txtBuscador = new javax.swing.JTextField();
+        btnRentar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
+        btnDevolver = new javax.swing.JButton();
+        btnRentarTodo = new javax.swing.JButton();
+        btnDevolverTodo = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        lblCantidadDisponibles = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        lblCantidadRentadas = new javax.swing.JLabel();
+        btnSiguienteDisponibles = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,67 +74,63 @@ public class Principal extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("PELICULAS RENTADAS");
 
-        jTextArea2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextArea2.setColumns(20);
-        jTextArea2.setForeground(new java.awt.Color(0, 0, 0));
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        txaDisponibles.setBackground(new java.awt.Color(255, 255, 255));
+        txaDisponibles.setColumns(20);
+        txaDisponibles.setForeground(new java.awt.Color(0, 0, 0));
+        txaDisponibles.setRows(5);
+        jScrollPane2.setViewportView(txaDisponibles);
 
-        jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextArea1.setColumns(20);
-        jTextArea1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txaRentadas.setBackground(new java.awt.Color(255, 255, 255));
+        txaRentadas.setColumns(20);
+        txaRentadas.setForeground(new java.awt.Color(0, 0, 0));
+        txaRentadas.setRows(5);
+        jScrollPane1.setViewportView(txaRentadas);
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 0));
-        jButton1.setForeground(new java.awt.Color(0, 0, 153));
-        jButton1.setText("<<");
+        btnInicioDisponibles.setBackground(new java.awt.Color(255, 255, 0));
+        btnInicioDisponibles.setForeground(new java.awt.Color(0, 0, 153));
+        btnInicioDisponibles.setText("<<");
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 0));
-        jButton2.setForeground(new java.awt.Color(0, 0, 153));
-        jButton2.setText(">>");
+        btnFinDisponibles.setBackground(new java.awt.Color(255, 255, 0));
+        btnFinDisponibles.setForeground(new java.awt.Color(0, 0, 153));
+        btnFinDisponibles.setText(">>");
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 0));
-        jButton3.setForeground(new java.awt.Color(0, 0, 153));
-        jButton3.setText("<");
+        btnAnteriorDisponibles.setBackground(new java.awt.Color(255, 255, 0));
+        btnAnteriorDisponibles.setForeground(new java.awt.Color(0, 0, 153));
+        btnAnteriorDisponibles.setText("<");
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 0));
-        jButton4.setForeground(new java.awt.Color(0, 0, 153));
-        jButton4.setText(">");
+        btnInicioRentadas.setBackground(new java.awt.Color(255, 255, 0));
+        btnInicioRentadas.setForeground(new java.awt.Color(0, 0, 153));
+        btnInicioRentadas.setText("<<");
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 0));
-        jButton5.setForeground(new java.awt.Color(0, 0, 153));
-        jButton5.setText("<<");
+        btnFinRentadas.setBackground(new java.awt.Color(255, 255, 0));
+        btnFinRentadas.setForeground(new java.awt.Color(0, 0, 153));
+        btnFinRentadas.setText(">>");
 
-        jButton6.setBackground(new java.awt.Color(255, 255, 0));
-        jButton6.setForeground(new java.awt.Color(0, 0, 153));
-        jButton6.setText(">>");
+        btnAnteriorRentadas.setBackground(new java.awt.Color(255, 255, 0));
+        btnAnteriorRentadas.setForeground(new java.awt.Color(0, 0, 153));
+        btnAnteriorRentadas.setText("<");
 
-        jButton7.setBackground(new java.awt.Color(255, 255, 0));
-        jButton7.setForeground(new java.awt.Color(0, 0, 153));
-        jButton7.setText("<");
+        btnSiguienteRentadas.setBackground(new java.awt.Color(255, 255, 0));
+        btnSiguienteRentadas.setForeground(new java.awt.Color(0, 0, 153));
+        btnSiguienteRentadas.setText(">");
 
-        jButton8.setBackground(new java.awt.Color(255, 255, 0));
-        jButton8.setForeground(new java.awt.Color(0, 0, 153));
-        jButton8.setText(">");
+        txtActualDisponibles.setBackground(new java.awt.Color(255, 255, 255));
+        txtActualDisponibles.setForeground(new java.awt.Color(0, 0, 0));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
+        txtActualRentadas.setBackground(new java.awt.Color(255, 255, 255));
+        txtActualRentadas.setForeground(new java.awt.Color(0, 0, 0));
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
+        btnBuscar.setBackground(new java.awt.Color(255, 255, 0));
+        btnBuscar.setForeground(new java.awt.Color(0, 0, 153));
+        btnBuscar.setText("Buscar");
 
-        jButton9.setBackground(new java.awt.Color(255, 255, 0));
-        jButton9.setForeground(new java.awt.Color(0, 0, 153));
-        jButton9.setText("Buscar");
+        txtBuscador.setBackground(new java.awt.Color(255, 255, 255));
+        txtBuscador.setForeground(new java.awt.Color(153, 153, 153));
+        txtBuscador.setText("Pelicula...");
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField3.setText("Pelicula...");
-
-        jButton10.setBackground(new java.awt.Color(255, 255, 0));
-        jButton10.setForeground(new java.awt.Color(0, 0, 153));
-        jButton10.setText("Rentar");
+        btnRentar.setBackground(new java.awt.Color(255, 255, 0));
+        btnRentar.setForeground(new java.awt.Color(0, 0, 153));
+        btnRentar.setText("Rentar");
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 0));
         jLabel1.setText("Actual");
@@ -135,17 +138,33 @@ public class Principal extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 0));
         jLabel4.setText("Actual");
 
-        jButton11.setBackground(new java.awt.Color(255, 255, 0));
-        jButton11.setForeground(new java.awt.Color(0, 0, 153));
-        jButton11.setText("Devolver");
+        btnDevolver.setBackground(new java.awt.Color(255, 255, 0));
+        btnDevolver.setForeground(new java.awt.Color(0, 0, 153));
+        btnDevolver.setText("Devolver");
 
-        jButton12.setBackground(new java.awt.Color(255, 255, 102));
-        jButton12.setForeground(new java.awt.Color(0, 0, 153));
-        jButton12.setText("Rentar Todo");
+        btnRentarTodo.setBackground(new java.awt.Color(255, 255, 102));
+        btnRentarTodo.setForeground(new java.awt.Color(0, 0, 153));
+        btnRentarTodo.setText("Rentar Todo");
 
-        jButton13.setBackground(new java.awt.Color(255, 255, 102));
-        jButton13.setForeground(new java.awt.Color(0, 0, 153));
-        jButton13.setText("Devolver Todo");
+        btnDevolverTodo.setBackground(new java.awt.Color(255, 255, 102));
+        btnDevolverTodo.setForeground(new java.awt.Color(0, 0, 153));
+        btnDevolverTodo.setText("Devolver Todo");
+
+        jLabel5.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel5.setText("Cantidad");
+
+        lblCantidadDisponibles.setForeground(new java.awt.Color(255, 255, 0));
+        lblCantidadDisponibles.setText("jLabel6");
+
+        jLabel7.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel7.setText("Cantidad");
+
+        lblCantidadRentadas.setForeground(new java.awt.Color(255, 255, 0));
+        lblCantidadRentadas.setText("jLabel8");
+
+        btnSiguienteDisponibles.setBackground(new java.awt.Color(255, 255, 0));
+        btnSiguienteDisponibles.setForeground(new java.awt.Color(0, 0, 153));
+        btnSiguienteDisponibles.setText(">");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -155,49 +174,58 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(49, 49, 49)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton9)
+                        .addComponent(btnBuscar)
                         .addGap(15, 15, 15)
-                        .addComponent(jTextField3))
+                        .addComponent(txtBuscador))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
-                            .addComponent(jLabel4)
-                            .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtActualDisponibles, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+                            .addComponent(btnRentar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 1, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(txtActualRentadas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnDevolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnRentarTodo, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnDevolverTodo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnInicioDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnAnteriorDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(49, 49, 49)
+                                .addComponent(btnSiguienteDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnFinDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblCantidadDisponibles)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblCantidadRentadas))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jScrollPane1)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(btnInicioRentadas, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnAnteriorRentadas, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                                    .addComponent(btnSiguienteRentadas, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnFinRentadas, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(30, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -208,48 +236,53 @@ public class Principal extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(lblCantidadDisponibles)
+                    .addComponent(jLabel7)
+                    .addComponent(lblCantidadRentadas))
+                .addGap(2, 2, 2)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton4)
-                    .addComponent(jButton3)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7)
-                    .addComponent(jButton8))
+                    .addComponent(btnInicioDisponibles)
+                    .addComponent(btnFinDisponibles)
+                    .addComponent(btnAnteriorDisponibles)
+                    .addComponent(btnInicioRentadas)
+                    .addComponent(btnFinRentadas)
+                    .addComponent(btnAnteriorRentadas)
+                    .addComponent(btnSiguienteRentadas)
+                    .addComponent(btnSiguienteDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtActualDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtActualRentadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton11))
+                    .addComponent(btnRentar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDevolver))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton12)
-                    .addComponent(jButton13))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRentarTodo)
+                    .addComponent(btnDevolverTodo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton9)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnBuscar)
+                    .addComponent(txtBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(48, 48, 48)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(130, Short.MAX_VALUE)))
+                    .addContainerGap(189, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -298,34 +331,39 @@ public class Principal extends javax.swing.JFrame {
             public void run() {
                 new Principal().setVisible(true);
             }
-        });
+        }
+        );
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton btnAnteriorDisponibles;
+    private javax.swing.JButton btnAnteriorRentadas;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnDevolver;
+    private javax.swing.JButton btnDevolverTodo;
+    private javax.swing.JButton btnFinDisponibles;
+    private javax.swing.JButton btnFinRentadas;
+    private javax.swing.JButton btnInicioDisponibles;
+    private javax.swing.JButton btnInicioRentadas;
+    private javax.swing.JButton btnRentar;
+    private javax.swing.JButton btnRentarTodo;
+    private javax.swing.JButton btnSiguienteDisponibles;
+    private javax.swing.JButton btnSiguienteRentadas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel lblCantidadDisponibles;
+    private javax.swing.JLabel lblCantidadRentadas;
+    private javax.swing.JTextArea txaDisponibles;
+    private javax.swing.JTextArea txaRentadas;
+    private javax.swing.JTextField txtActualDisponibles;
+    private javax.swing.JTextField txtActualRentadas;
+    private javax.swing.JTextField txtBuscador;
     // End of variables declaration//GEN-END:variables
 }
