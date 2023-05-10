@@ -5,9 +5,9 @@ package edu.udls.proyectopeliculas.modelo;
  * @author Ivan
  */
 public class ListaPeliculas {
-    Nodo first;
-    Nodo actual;
-    Nodo last;
+    public Nodo first;
+    public Nodo actual;
+    public Nodo last;
     int size;
     
     public ListaPeliculas(){}
@@ -55,41 +55,41 @@ public class ListaPeliculas {
             toAdd.setSiguiente(null);
             size++;
         }else{
+            toAdd.setSiguiente(null);
             toAdd.setAnterior(last);
             last.setSiguiente(toAdd);
-            toAdd.setSiguiente(null);
             last = toAdd;
             size++;
         }
     }
     
-    public void move(ListaPeliculas listaA, ListaPeliculas listaB){
-        listaB.add(listaA.actual());
-        listaA.actual.getAnterior().setSiguiente(listaA.actual.getSiguiente());
-        listaA.actual.getSiguiente().setAnterior(listaA.actual.getAnterior());
-        listaA.size--;
-        listaB.size++;
+    public static void move(ListaPeliculas removeFromList, ListaPeliculas addToList){
+        addToList.add(removeFromList.actual.getMovie());
+        removeFromList.actual.getAnterior().setSiguiente(removeFromList.actual.getSiguiente());
+        removeFromList.actual.getSiguiente().setAnterior(removeFromList.actual.getAnterior());
+        removeFromList.size--;
+        addToList.size++;
     }
     
-    public void moveAll(ListaPeliculas listaA, ListaPeliculas listaB){
-        listaA.actual = listaA.first;
-        for(int i = 0; i <= listaA.size(); i++){
-            listaB.add(listaA.actual());
-            listaA.actual.getAnterior().setSiguiente(listaA.actual.getSiguiente());
-            listaA.actual.getSiguiente().setAnterior(listaA.actual.getAnterior());
-            listaA.size--;
-            listaB.size++;
-            listaA.actual = listaA.actual.getSiguiente();
+    public static void moveAll(ListaPeliculas removeFromList, ListaPeliculas addToList){
+        removeFromList.actual = removeFromList.first;
+        for(int i = 0; i <= removeFromList.size(); i++){
+            addToList.add(removeFromList.actual());
+            removeFromList.actual.getAnterior().setSiguiente(removeFromList.actual.getSiguiente());
+            removeFromList.actual.getSiguiente().setAnterior(removeFromList.actual.getAnterior());
+            removeFromList.size--;
+            addToList.size++;
+            removeFromList.actual = removeFromList.actual.getSiguiente();
         }
     }
     
-    public String enlist(ListaPeliculas listaA){
+    public String enlist(ListaPeliculas list){
         String relist = "";
         
-        listaA.actual = listaA.first;
-        for(int i = 0; i <= listaA.size; i++){
-            relist += (i+1) + ". " + listaA.actual.getMovie() + "\n";
-            listaA.actual = listaA.actual.getSiguiente();
+        list.actual = list.first;
+        for(int i = 0; i <= list.size; i++){
+            relist += (i+1) + ". " + list.actual.getMovie() + "\n";
+            list.actual = list.actual.getSiguiente();
         }
         return relist;
     }

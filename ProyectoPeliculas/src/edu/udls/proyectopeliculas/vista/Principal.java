@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package edu.udls.proyectopeliculas.vista;
+import edu.udls.proyectopeliculas.control.GestorArchivos;
 import edu.udls.proyectopeliculas.modelo.ListaPeliculas;
 
 /**
@@ -18,6 +19,8 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        txaDisponibles.setText(GestorArchivos.leerArchivo(listaDisponibles, "C:\\Users\\Chaca\\Documents\\OneDrive - Universidad La Salle Bajío\\Semestre Dos\\Programacion Estructurada y Orientada a Objetos\\OrientadaObjetos\\ProyectoPeliculas\\PeliculasDisponibles.csv"));
+        txaRentadas.setText(GestorArchivos.leerArchivo(listaRentadas, "C:\\Users\\Chaca\\Documents\\OneDrive - Universidad La Salle Bajío\\Semestre Dos\\Programacion Estructurada y Orientada a Objetos\\OrientadaObjetos\\ProyectoPeliculas\\PeliculasRentadas.csv"));
     }
 
     /**
@@ -89,26 +92,56 @@ public class Principal extends javax.swing.JFrame {
         btnInicioDisponibles.setBackground(new java.awt.Color(255, 255, 0));
         btnInicioDisponibles.setForeground(new java.awt.Color(0, 0, 153));
         btnInicioDisponibles.setText("<<");
+        btnInicioDisponibles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInicioDisponiblesActionPerformed(evt);
+            }
+        });
 
         btnFinDisponibles.setBackground(new java.awt.Color(255, 255, 0));
         btnFinDisponibles.setForeground(new java.awt.Color(0, 0, 153));
         btnFinDisponibles.setText(">>");
+        btnFinDisponibles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinDisponiblesActionPerformed(evt);
+            }
+        });
 
         btnAnteriorDisponibles.setBackground(new java.awt.Color(255, 255, 0));
         btnAnteriorDisponibles.setForeground(new java.awt.Color(0, 0, 153));
         btnAnteriorDisponibles.setText("<");
+        btnAnteriorDisponibles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnteriorDisponiblesActionPerformed(evt);
+            }
+        });
 
         btnInicioRentadas.setBackground(new java.awt.Color(255, 255, 0));
         btnInicioRentadas.setForeground(new java.awt.Color(0, 0, 153));
         btnInicioRentadas.setText("<<");
+        btnInicioRentadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInicioRentadasActionPerformed(evt);
+            }
+        });
 
         btnFinRentadas.setBackground(new java.awt.Color(255, 255, 0));
         btnFinRentadas.setForeground(new java.awt.Color(0, 0, 153));
         btnFinRentadas.setText(">>");
+        btnFinRentadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinRentadasActionPerformed(evt);
+            }
+        });
 
         btnAnteriorRentadas.setBackground(new java.awt.Color(255, 255, 0));
         btnAnteriorRentadas.setForeground(new java.awt.Color(0, 0, 153));
         btnAnteriorRentadas.setText("<");
+        btnAnteriorRentadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnteriorRentadasActionPerformed(evt);
+            }
+        });
 
         btnSiguienteRentadas.setBackground(new java.awt.Color(255, 255, 0));
         btnSiguienteRentadas.setForeground(new java.awt.Color(0, 0, 153));
@@ -131,6 +164,11 @@ public class Principal extends javax.swing.JFrame {
         btnRentar.setBackground(new java.awt.Color(255, 255, 0));
         btnRentar.setForeground(new java.awt.Color(0, 0, 153));
         btnRentar.setText("Rentar");
+        btnRentar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRentarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 0));
         jLabel1.setText("Actual");
@@ -141,10 +179,20 @@ public class Principal extends javax.swing.JFrame {
         btnDevolver.setBackground(new java.awt.Color(255, 255, 0));
         btnDevolver.setForeground(new java.awt.Color(0, 0, 153));
         btnDevolver.setText("Devolver");
+        btnDevolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDevolverActionPerformed(evt);
+            }
+        });
 
         btnRentarTodo.setBackground(new java.awt.Color(255, 255, 102));
         btnRentarTodo.setForeground(new java.awt.Color(0, 0, 153));
         btnRentarTodo.setText("Rentar Todo");
+        btnRentarTodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRentarTodoActionPerformed(evt);
+            }
+        });
 
         btnDevolverTodo.setBackground(new java.awt.Color(255, 255, 102));
         btnDevolverTodo.setForeground(new java.awt.Color(0, 0, 153));
@@ -165,6 +213,11 @@ public class Principal extends javax.swing.JFrame {
         btnSiguienteDisponibles.setBackground(new java.awt.Color(255, 255, 0));
         btnSiguienteDisponibles.setForeground(new java.awt.Color(0, 0, 153));
         btnSiguienteDisponibles.setText(">");
+        btnSiguienteDisponibles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguienteDisponiblesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -248,15 +301,16 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(2, 2, 2)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnInicioDisponibles)
-                    .addComponent(btnFinDisponibles)
-                    .addComponent(btnAnteriorDisponibles)
-                    .addComponent(btnInicioRentadas)
-                    .addComponent(btnFinRentadas)
-                    .addComponent(btnAnteriorRentadas)
-                    .addComponent(btnSiguienteRentadas)
-                    .addComponent(btnSiguienteDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnInicioDisponibles)
+                        .addComponent(btnFinDisponibles)
+                        .addComponent(btnAnteriorDisponibles)
+                        .addComponent(btnInicioRentadas)
+                        .addComponent(btnFinRentadas)
+                        .addComponent(btnAnteriorRentadas)
+                        .addComponent(btnSiguienteRentadas))
+                    .addComponent(btnSiguienteDisponibles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -298,6 +352,75 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnInicioDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioDisponiblesActionPerformed
+        // TODO add your handling code here:
+        txtActualDisponibles.setText(listaDisponibles.first());
+        listaDisponibles.actual = listaDisponibles.first;
+    }//GEN-LAST:event_btnInicioDisponiblesActionPerformed
+
+    private void btnFinDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinDisponiblesActionPerformed
+        // TODO add your handling code here:
+        txtActualDisponibles.setText(listaDisponibles.last());
+        listaDisponibles.actual = listaDisponibles.last;
+    }//GEN-LAST:event_btnFinDisponiblesActionPerformed
+
+    private void btnInicioRentadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioRentadasActionPerformed
+        // TODO add your handling code here:
+        txtActualRentadas.setText(listaRentadas.first());
+        listaRentadas.actual = listaRentadas.first;
+    }//GEN-LAST:event_btnInicioRentadasActionPerformed
+
+    private void btnFinRentadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinRentadasActionPerformed
+        // TODO add your handling code here:
+        txtActualRentadas.setText(listaRentadas.last());
+        listaRentadas.actual = listaRentadas.last;
+    }//GEN-LAST:event_btnFinRentadasActionPerformed
+
+    private void btnAnteriorDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorDisponiblesActionPerformed
+        // TODO add your handling code here:
+        if(listaDisponibles.first() != listaDisponibles.actual()){
+            txtActualDisponibles.setText(listaDisponibles.actual.getAnterior().getMovie());
+            listaDisponibles.actual = listaDisponibles.actual.getAnterior();
+        }
+    }//GEN-LAST:event_btnAnteriorDisponiblesActionPerformed
+
+    private void btnSiguienteDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteDisponiblesActionPerformed
+        // TODO add your handling code here:
+        if(listaDisponibles.last() != listaDisponibles.actual()){
+            txtActualDisponibles.setText(listaDisponibles.actual.getSiguiente().getMovie());
+            listaDisponibles.actual = listaDisponibles.actual.getSiguiente();
+        }
+    }//GEN-LAST:event_btnSiguienteDisponiblesActionPerformed
+
+    private void btnAnteriorRentadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorRentadasActionPerformed
+        // TODO add your handling code here:
+        if(listaRentadas.first() != listaRentadas.actual()){
+            txtActualRentadas.setText(listaRentadas.actual.getAnterior().getMovie());
+            listaRentadas.actual = listaRentadas.actual.getAnterior();
+        }
+    }//GEN-LAST:event_btnAnteriorRentadasActionPerformed
+
+    private void btnRentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentarActionPerformed
+        // TODO add your handling code here:
+        ListaPeliculas.move(listaDisponibles, listaRentadas);
+        txaDisponibles.setText(listaDisponibles.enlist(listaDisponibles));
+        txaRentadas.setText(listaRentadas.enlist(listaRentadas));
+    }//GEN-LAST:event_btnRentarActionPerformed
+
+    private void btnRentarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentarTodoActionPerformed
+        // TODO add your handling code here:
+        ListaPeliculas.moveAll(listaDisponibles, listaRentadas);
+        txaDisponibles.setText(null);
+        txaRentadas.setText(listaRentadas.enlist(listaRentadas));
+    }//GEN-LAST:event_btnRentarTodoActionPerformed
+
+    private void btnDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverActionPerformed
+        // TODO add your handling code here:
+        ListaPeliculas.move(listaRentadas, listaDisponibles);
+        txaDisponibles.setText(listaDisponibles.enlist(listaDisponibles));
+        txaRentadas.setText(listaRentadas.enlist(listaRentadas));
+    }//GEN-LAST:event_btnDevolverActionPerformed
 
     /**
      * @param args the command line arguments

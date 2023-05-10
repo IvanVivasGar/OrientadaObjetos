@@ -31,7 +31,7 @@ public class Nodo {
         return this.anterior;
     }
     
-    public void setSiguiente(Nodo Siguiente){
+    public void setSiguiente(Nodo siguiente){
         this.siguiente = siguiente;
     }
     
