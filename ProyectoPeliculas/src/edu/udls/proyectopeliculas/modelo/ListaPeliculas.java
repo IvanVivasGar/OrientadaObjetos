@@ -1,5 +1,7 @@
 package edu.udls.proyectopeliculas.modelo;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Ivan
@@ -65,10 +67,12 @@ public class ListaPeliculas {
     
     public static void move(ListaPeliculas removeFromList, ListaPeliculas addToList){
         addToList.add(removeFromList.actual.getMovie());
-        removeFromList.actual.getAnterior().setSiguiente(removeFromList.actual.getSiguiente());
-        removeFromList.actual.getSiguiente().setAnterior(removeFromList.actual.getAnterior());
+        removeFromList.actual = removeFromList.actual.getAnterior();
+        removeFromList.actual.setSiguiente(removeFromList.actual.getSiguiente().getSiguiente());
+        removeFromList.actual.getSiguiente().getSiguiente().setAnterior(removeFromList.actual);
         removeFromList.size--;
         addToList.size++;
+        JOptionPane.showMessageDialog(null, "Pelicula agregada con exito");
     }
     
     public static void moveAll(ListaPeliculas removeFromList, ListaPeliculas addToList){
@@ -87,6 +91,7 @@ public class ListaPeliculas {
         String relist = "";
         
         list.actual = list.first;
+        JOptionPane.showMessageDialog(null, "Todo bien hasta ahora");
         for(int i = 0; i <= list.size; i++){
             relist += (i+1) + ". " + list.actual.getMovie() + "\n";
             list.actual = list.actual.getSiguiente();

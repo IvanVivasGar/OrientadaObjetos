@@ -19,8 +19,8 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
-        txaDisponibles.setText(GestorArchivos.leerArchivo(listaDisponibles, "C:\\Users\\Chaca\\Documents\\OneDrive - Universidad La Salle Bajío\\Semestre Dos\\Programacion Estructurada y Orientada a Objetos\\OrientadaObjetos\\ProyectoPeliculas\\PeliculasDisponibles.csv"));
-        txaRentadas.setText(GestorArchivos.leerArchivo(listaRentadas, "C:\\Users\\Chaca\\Documents\\OneDrive - Universidad La Salle Bajío\\Semestre Dos\\Programacion Estructurada y Orientada a Objetos\\OrientadaObjetos\\ProyectoPeliculas\\PeliculasRentadas.csv"));
+        txaDisponibles.setText(GestorArchivos.leerArchivo(listaDisponibles, "C:\\Users\\Ivan\\Documents\\OneDrive - Universidad La Salle Bajío\\Semestre Dos\\Programacion Estructurada y Orientada a Objetos\\OrientadaObjetos\\ProyectoPeliculas\\PeliculasDisponibles.csv"));
+        txaRentadas.setText(GestorArchivos.leerArchivo(listaRentadas, "C:\\Users\\Ivan\\Documents\\OneDrive - Universidad La Salle Bajío\\Semestre Dos\\Programacion Estructurada y Orientada a Objetos\\OrientadaObjetos\\ProyectoPeliculas\\PeliculasRentadas.csv"));
     }
 
     /**
@@ -146,6 +146,11 @@ public class Principal extends javax.swing.JFrame {
         btnSiguienteRentadas.setBackground(new java.awt.Color(255, 255, 0));
         btnSiguienteRentadas.setForeground(new java.awt.Color(0, 0, 153));
         btnSiguienteRentadas.setText(">");
+        btnSiguienteRentadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguienteRentadasActionPerformed(evt);
+            }
+        });
 
         txtActualDisponibles.setBackground(new java.awt.Color(255, 255, 255));
         txtActualDisponibles.setForeground(new java.awt.Color(0, 0, 0));
@@ -320,9 +325,9 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(txtActualDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtActualRentadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRentar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDevolver))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnDevolver)
+                    .addComponent(btnRentar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRentarTodo)
@@ -380,24 +385,24 @@ public class Principal extends javax.swing.JFrame {
     private void btnAnteriorDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorDisponiblesActionPerformed
         // TODO add your handling code here:
         if(listaDisponibles.first() != listaDisponibles.actual()){
-            txtActualDisponibles.setText(listaDisponibles.actual.getAnterior().getMovie());
             listaDisponibles.actual = listaDisponibles.actual.getAnterior();
+            txtActualDisponibles.setText(listaDisponibles.actual());
         }
     }//GEN-LAST:event_btnAnteriorDisponiblesActionPerformed
 
     private void btnSiguienteDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteDisponiblesActionPerformed
         // TODO add your handling code here:
         if(listaDisponibles.last() != listaDisponibles.actual()){
-            txtActualDisponibles.setText(listaDisponibles.actual.getSiguiente().getMovie());
             listaDisponibles.actual = listaDisponibles.actual.getSiguiente();
+            txtActualDisponibles.setText(listaDisponibles.actual());
         }
     }//GEN-LAST:event_btnSiguienteDisponiblesActionPerformed
 
     private void btnAnteriorRentadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorRentadasActionPerformed
         // TODO add your handling code here:
         if(listaRentadas.first() != listaRentadas.actual()){
-            txtActualRentadas.setText(listaRentadas.actual.getAnterior().getMovie());
             listaRentadas.actual = listaRentadas.actual.getAnterior();
+            txtActualRentadas.setText(listaRentadas.actual());
         }
     }//GEN-LAST:event_btnAnteriorRentadasActionPerformed
 
@@ -421,6 +426,14 @@ public class Principal extends javax.swing.JFrame {
         txaDisponibles.setText(listaDisponibles.enlist(listaDisponibles));
         txaRentadas.setText(listaRentadas.enlist(listaRentadas));
     }//GEN-LAST:event_btnDevolverActionPerformed
+
+    private void btnSiguienteRentadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteRentadasActionPerformed
+        // TODO add your handling code here:
+        if(listaRentadas.last() != listaRentadas.actual()){
+            listaRentadas.actual = listaRentadas.actual.getSiguiente();
+            txtActualRentadas.setText(listaRentadas.actual());
+        }
+    }//GEN-LAST:event_btnSiguienteRentadasActionPerformed
 
     /**
      * @param args the command line arguments
