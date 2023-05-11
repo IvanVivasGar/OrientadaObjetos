@@ -14,6 +14,13 @@ public class ListaPeliculas {
     
     public ListaPeliculas(){}
     
+    public void clean(){
+        this.first = null;
+        this.actual = null;
+        this.last = null;
+        size = 0;
+    }
+    
     public int size(){
         return this.size;
     }
@@ -55,17 +62,17 @@ public class ListaPeliculas {
             this.last = toAdd;
             toAdd.setAnterior(null);
             toAdd.setSiguiente(null);
-            size++;
         }else{
             toAdd.setSiguiente(null);
             toAdd.setAnterior(last);
             last.setSiguiente(toAdd);
             last = toAdd;
-            size++;
         }
+        size++;
     }
     
     public static void move(ListaPeliculas removeFromList, ListaPeliculas addToList){
+        
         addToList.add(removeFromList.actual.getMovie());
         removeFromList.actual = removeFromList.actual.getAnterior();
         removeFromList.actual.setSiguiente(removeFromList.actual.getSiguiente().getSiguiente());
@@ -91,8 +98,7 @@ public class ListaPeliculas {
         String relist = "";
         
         list.actual = list.first;
-        JOptionPane.showMessageDialog(null, "Todo bien hasta ahora");
-        for(int i = 0; i <= list.size; i++){
+        for(int i = 0; i < (list.size - 1); i++){
             relist += (i+1) + ". " + list.actual.getMovie() + "\n";
             list.actual = list.actual.getSiguiente();
         }

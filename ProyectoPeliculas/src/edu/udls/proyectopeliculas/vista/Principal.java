@@ -5,6 +5,7 @@
 package edu.udls.proyectopeliculas.vista;
 import edu.udls.proyectopeliculas.control.GestorArchivos;
 import edu.udls.proyectopeliculas.modelo.ListaPeliculas;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -415,9 +416,12 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnRentarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentarTodoActionPerformed
         // TODO add your handling code here:
+        /*
         ListaPeliculas.moveAll(listaDisponibles, listaRentadas);
         txaDisponibles.setText(null);
         txaRentadas.setText(listaRentadas.enlist(listaRentadas));
+        */
+        JOptionPane.showMessageDialog(null, listaRentadas.size() + "  " + listaDisponibles.size());
     }//GEN-LAST:event_btnRentarTodoActionPerformed
 
     private void btnDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverActionPerformed
