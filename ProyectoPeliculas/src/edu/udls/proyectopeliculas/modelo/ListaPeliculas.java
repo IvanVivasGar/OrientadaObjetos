@@ -62,7 +62,7 @@ public class ListaPeliculas {
             this.last = toAdd;
             toAdd.setAnterior(null);
             toAdd.setSiguiente(null);
-        }else{
+        }else {
             toAdd.setSiguiente(null);
             toAdd.setAnterior(last);
             last.setSiguiente(toAdd);
@@ -72,38 +72,43 @@ public class ListaPeliculas {
     }
     
     public static void move(ListaPeliculas removeFromList, ListaPeliculas addToList){
-        
         addToList.add(removeFromList.actual.getMovie());
-        removeFromList.actual = removeFromList.actual.getAnterior();
-        removeFromList.actual.setSiguiente(removeFromList.actual.getSiguiente().getSiguiente());
-        removeFromList.actual.getSiguiente().getSiguiente().setAnterior(removeFromList.actual);
+        if(removeFromList.actual == removeFromList.first){
+            removeFromList.first = removeFromList.first.getSiguiente();
+            removeFromList.first.getAnterior().setSiguiente(null);
+            removeFromList.first.setAnterior(null);
+        }else if(removeFromList.actual == removeFromList.last){
+            removeFromList.last = removeFromList.last.getAnterior();
+            removeFromList.last.getSiguiente().setAnterior(null);
+            removeFromList.last.setSiguiente(null);
+        }else{
+            removeFromList.actual = removeFromList.actual.getAnterior();
+            removeFromList.actual.setSiguiente(removeFromList.actual.getSiguiente().getSiguiente());
+            removeFromList.actual.getSiguiente().getSiguiente().setAnterior(removeFromList.actual);
+            removeFromList.size--;
+        }
         removeFromList.size--;
-        addToList.size++;
         JOptionPane.showMessageDialog(null, "Pelicula agregada con exito");
     }
     
     public static void moveAll(ListaPeliculas removeFromList, ListaPeliculas addToList){
         removeFromList.actual = removeFromList.first;
-        for(int i = 0; i <= removeFromList.size(); i++){
-            addToList.add(removeFromList.actual());
-            removeFromList.actual.getAnterior().setSiguiente(removeFromList.actual.getSiguiente());
-            removeFromList.actual.getSiguiente().setAnterior(removeFromList.actual.getAnterior());
-            removeFromList.size--;
-            addToList.size++;
+        do{
+            ListaPeliculas.move(removeFromList, addToList);
             removeFromList.actual = removeFromList.actual.getSiguiente();
-        }
+        }while(removeFromList.actual != null);
     }
     
     public String enlist(ListaPeliculas list){
+        int i = 1;
         String relist = "";
         
         list.actual = list.first;
-        for(int i = 0; i < list.size; i++){
-            relist += (i+1) + ". " + list.actual.getMovie() + "\n";
-            if(list.actual.getSiguiente() != null){
-                list.actual = list.actual.getSiguiente();
-            }
-        }
+        do{
+            relist += (i) + ". " + list.actual.getMovie() + "\n";
+            i++;
+            list.actual = list.actual.getSiguiente();
+        }while(list.actual != null);
         return relist;
     }
 }

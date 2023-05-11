@@ -205,6 +205,11 @@ public class Principal extends javax.swing.JFrame {
         btnDevolverTodo.setBackground(new java.awt.Color(255, 255, 102));
         btnDevolverTodo.setForeground(new java.awt.Color(0, 0, 153));
         btnDevolverTodo.setText("Devolver Todo");
+        btnDevolverTodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDevolverTodoActionPerformed(evt);
+            }
+        });
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 0));
         jLabel5.setText("Cantidad");
@@ -418,6 +423,8 @@ public class Principal extends javax.swing.JFrame {
         ListaPeliculas.move(listaDisponibles, listaRentadas);
         txaDisponibles.setText(listaDisponibles.enlist(listaDisponibles));
         txaRentadas.setText(listaRentadas.enlist(listaRentadas));
+        lblCantidadDisponibles.setText(Integer.toString(listaDisponibles.size()));
+        lblCantidadRentadas.setText(Integer.toString(listaRentadas.size()));
     }//GEN-LAST:event_btnRentarActionPerformed
 
     private void btnRentarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentarTodoActionPerformed
@@ -425,6 +432,8 @@ public class Principal extends javax.swing.JFrame {
         ListaPeliculas.moveAll(listaDisponibles, listaRentadas);
         txaDisponibles.setText(null);
         txaRentadas.setText(listaRentadas.enlist(listaRentadas));
+        lblCantidadDisponibles.setText(Integer.toString(listaDisponibles.size()));
+        lblCantidadRentadas.setText(Integer.toString(listaRentadas.size()));
     }//GEN-LAST:event_btnRentarTodoActionPerformed
 
     private void btnDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverActionPerformed
@@ -432,6 +441,8 @@ public class Principal extends javax.swing.JFrame {
         ListaPeliculas.move(listaRentadas, listaDisponibles);
         txaDisponibles.setText(listaDisponibles.enlist(listaDisponibles));
         txaRentadas.setText(listaRentadas.enlist(listaRentadas));
+        lblCantidadDisponibles.setText(Integer.toString(listaDisponibles.size()));
+        lblCantidadRentadas.setText(Integer.toString(listaRentadas.size()));
     }//GEN-LAST:event_btnDevolverActionPerformed
 
     private void btnSiguienteRentadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteRentadasActionPerformed
@@ -441,6 +452,15 @@ public class Principal extends javax.swing.JFrame {
             txtActualRentadas.setText(listaRentadas.actual());
         }
     }//GEN-LAST:event_btnSiguienteRentadasActionPerformed
+
+    private void btnDevolverTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverTodoActionPerformed
+        // TODO add your handling code here:
+        ListaPeliculas.moveAll(listaRentadas, listaDisponibles);
+        txaRentadas.setText(null);
+        txaDisponibles.setText(listaDisponibles.enlist(listaDisponibles));
+        lblCantidadDisponibles.setText(Integer.toString(listaDisponibles.size()));
+        lblCantidadRentadas.setText(Integer.toString(listaRentadas.size()));
+    }//GEN-LAST:event_btnDevolverTodoActionPerformed
 
     /**
      * @param args the command line arguments
