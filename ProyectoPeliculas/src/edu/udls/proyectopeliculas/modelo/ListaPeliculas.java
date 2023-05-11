@@ -98,9 +98,11 @@ public class ListaPeliculas {
         String relist = "";
         
         list.actual = list.first;
-        for(int i = 0; i < (list.size - 1); i++){
+        for(int i = 0; i < list.size; i++){
             relist += (i+1) + ". " + list.actual.getMovie() + "\n";
-            list.actual = list.actual.getSiguiente();
+            if(list.actual.getSiguiente() != null){
+                list.actual = list.actual.getSiguiente();
+            }
         }
         return relist;
     }

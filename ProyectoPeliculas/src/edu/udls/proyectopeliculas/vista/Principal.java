@@ -20,8 +20,10 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
-        txaDisponibles.setText(GestorArchivos.leerArchivo(listaDisponibles, "C:\\Users\\Ivan\\Documents\\OneDrive - Universidad La Salle Bajío\\Semestre Dos\\Programacion Estructurada y Orientada a Objetos\\OrientadaObjetos\\ProyectoPeliculas\\PeliculasDisponibles.csv"));
-        txaRentadas.setText(GestorArchivos.leerArchivo(listaRentadas, "C:\\Users\\Ivan\\Documents\\OneDrive - Universidad La Salle Bajío\\Semestre Dos\\Programacion Estructurada y Orientada a Objetos\\OrientadaObjetos\\ProyectoPeliculas\\PeliculasRentadas.csv"));
+        txaDisponibles.setText(GestorArchivos.leerArchivo(listaDisponibles, "C:\\Users\\Chaca\\Documents\\OneDrive - Universidad La Salle Bajío\\Semestre Dos\\Programacion Estructurada y Orientada a Objetos\\OrientadaObjetos\\ProyectoPeliculas\\PeliculasDisponibles.csv"));
+        txaRentadas.setText(GestorArchivos.leerArchivo(listaRentadas, "C:\\Users\\Chaca\\Documents\\OneDrive - Universidad La Salle Bajío\\Semestre Dos\\Programacion Estructurada y Orientada a Objetos\\OrientadaObjetos\\ProyectoPeliculas\\PeliculasRentadas.csv"));
+        lblCantidadDisponibles.setText(Integer.toString(listaDisponibles.size()));
+        lblCantidadRentadas.setText(Integer.toString(listaRentadas.size()));
     }
 
     /**
@@ -238,10 +240,14 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(txtBuscador))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtActualDisponibles, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
-                            .addComponent(btnRentar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4))
-                        .addGap(18, 18, 18)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtActualDisponibles, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+                                    .addComponent(jLabel4))
+                                .addGap(18, 18, 18))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnRentar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 1, Short.MAX_VALUE)
@@ -326,23 +332,23 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(txtActualDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtActualRentadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnDevolver)
-                    .addComponent(btnRentar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRentar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDevolver))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRentarTodo)
                     .addComponent(btnDevolverTodo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscar)
                     .addComponent(txtBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15))
+                .addGap(30, 30, 30))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(48, 48, 48)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(189, Short.MAX_VALUE)))
+                    .addContainerGap(218, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -353,7 +359,7 @@ public class Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -361,26 +367,26 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnInicioDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioDisponiblesActionPerformed
         // TODO add your handling code here:
-        txtActualDisponibles.setText(listaDisponibles.first());
         listaDisponibles.actual = listaDisponibles.first;
+        txtActualDisponibles.setText(listaDisponibles.actual());
     }//GEN-LAST:event_btnInicioDisponiblesActionPerformed
 
     private void btnFinDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinDisponiblesActionPerformed
         // TODO add your handling code here:
-        txtActualDisponibles.setText(listaDisponibles.last());
         listaDisponibles.actual = listaDisponibles.last;
+        txtActualDisponibles.setText(listaDisponibles.actual());
     }//GEN-LAST:event_btnFinDisponiblesActionPerformed
 
     private void btnInicioRentadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioRentadasActionPerformed
         // TODO add your handling code here:
-        txtActualRentadas.setText(listaRentadas.first());
         listaRentadas.actual = listaRentadas.first;
+        txtActualRentadas.setText(listaRentadas.actual());
     }//GEN-LAST:event_btnInicioRentadasActionPerformed
 
     private void btnFinRentadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinRentadasActionPerformed
         // TODO add your handling code here:
-        txtActualRentadas.setText(listaRentadas.last());
         listaRentadas.actual = listaRentadas.last;
+        txtActualRentadas.setText(listaRentadas.actual());
     }//GEN-LAST:event_btnFinRentadasActionPerformed
 
     private void btnAnteriorDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorDisponiblesActionPerformed
@@ -416,12 +422,9 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnRentarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentarTodoActionPerformed
         // TODO add your handling code here:
-        /*
         ListaPeliculas.moveAll(listaDisponibles, listaRentadas);
         txaDisponibles.setText(null);
         txaRentadas.setText(listaRentadas.enlist(listaRentadas));
-        */
-        JOptionPane.showMessageDialog(null, listaRentadas.size() + "  " + listaDisponibles.size());
     }//GEN-LAST:event_btnRentarTodoActionPerformed
 
     private void btnDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverActionPerformed

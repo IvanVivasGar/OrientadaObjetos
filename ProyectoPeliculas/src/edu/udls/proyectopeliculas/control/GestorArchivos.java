@@ -25,7 +25,7 @@ public class GestorArchivos{
             //LEER CADA LINEA Y HAY QUE UNIRLO
             String linea = "";
             while((linea = br.readLine()) != null){
-                contenido += i + ". " + linea + "\n";
+                contenido += (i + 1) + ". " + linea + "\n";
                 peliculas.add(linea);
                 i++;
             }
