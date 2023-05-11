@@ -425,6 +425,7 @@ public class Principal extends javax.swing.JFrame {
         txaRentadas.setText(listaRentadas.enlist(listaRentadas));
         lblCantidadDisponibles.setText(Integer.toString(listaDisponibles.size()));
         lblCantidadRentadas.setText(Integer.toString(listaRentadas.size()));
+        txtActualDisponibles.setText(listaDisponibles.actual());
     }//GEN-LAST:event_btnRentarActionPerformed
 
     private void btnRentarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentarTodoActionPerformed
@@ -434,6 +435,7 @@ public class Principal extends javax.swing.JFrame {
         txaRentadas.setText(listaRentadas.enlist(listaRentadas));
         lblCantidadDisponibles.setText(Integer.toString(listaDisponibles.size()));
         lblCantidadRentadas.setText(Integer.toString(listaRentadas.size()));
+        txtActualDisponibles.setText(null);
     }//GEN-LAST:event_btnRentarTodoActionPerformed
 
     private void btnDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverActionPerformed
@@ -443,6 +445,7 @@ public class Principal extends javax.swing.JFrame {
         txaRentadas.setText(listaRentadas.enlist(listaRentadas));
         lblCantidadDisponibles.setText(Integer.toString(listaDisponibles.size()));
         lblCantidadRentadas.setText(Integer.toString(listaRentadas.size()));
+        txtActualRentadas.setText(listaRentadas.actual());
     }//GEN-LAST:event_btnDevolverActionPerformed
 
     private void btnSiguienteRentadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteRentadasActionPerformed
@@ -460,6 +463,7 @@ public class Principal extends javax.swing.JFrame {
         txaDisponibles.setText(listaDisponibles.enlist(listaDisponibles));
         lblCantidadDisponibles.setText(Integer.toString(listaDisponibles.size()));
         lblCantidadRentadas.setText(Integer.toString(listaRentadas.size()));
+        txtActualRentadas.setText(listaRentadas.actual());
     }//GEN-LAST:event_btnDevolverTodoActionPerformed
 
     /**

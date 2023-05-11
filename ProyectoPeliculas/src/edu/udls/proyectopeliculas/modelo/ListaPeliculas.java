@@ -77,26 +77,27 @@ public class ListaPeliculas {
             removeFromList.first = removeFromList.first.getSiguiente();
             removeFromList.first.getAnterior().setSiguiente(null);
             removeFromList.first.setAnterior(null);
+            removeFromList.actual = removeFromList.actual;
         }else if(removeFromList.actual == removeFromList.last){
             removeFromList.last = removeFromList.last.getAnterior();
             removeFromList.last.getSiguiente().setAnterior(null);
             removeFromList.last.setSiguiente(null);
+            removeFromList.actual = removeFromList.last;
         }else{
             removeFromList.actual = removeFromList.actual.getAnterior();
             removeFromList.actual.setSiguiente(removeFromList.actual.getSiguiente().getSiguiente());
             removeFromList.actual.getSiguiente().getSiguiente().setAnterior(removeFromList.actual);
-            removeFromList.size--;
         }
         removeFromList.size--;
-        JOptionPane.showMessageDialog(null, "Pelicula agregada con exito");
     }
     
     public static void moveAll(ListaPeliculas removeFromList, ListaPeliculas addToList){
         removeFromList.actual = removeFromList.first;
         do{
-            ListaPeliculas.move(removeFromList, addToList);
+            addToList.add(removeFromList.actual());
             removeFromList.actual = removeFromList.actual.getSiguiente();
         }while(removeFromList.actual != null);
+        removeFromList.clean();
     }
     
     public String enlist(ListaPeliculas list){
