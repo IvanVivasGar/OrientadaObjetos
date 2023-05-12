@@ -37,6 +37,7 @@ public class ListaPeliculas {
         return this.actual.getMovie();
     }
     
+<<<<<<< HEAD
     public Nodo search(String value){
         boolean found = false;
         int i = 0;
@@ -55,6 +56,28 @@ public class ListaPeliculas {
             }
         }while(found == false || i < this.size);
         return this.actual;
+=======
+    public String search(String value){
+        boolean found = false;
+        int i = 0;
+        value = value.replaceAll("\\s", "").toLowerCase();
+        
+        this.actual = this.first;
+        do{
+            JOptionPane.showMessageDialog(null, "Pelicula encontrada " + this.actual.getMovie());
+            int positionComaId = this.actual().replaceAll("\\s", "").indexOf(",");
+            int positionComaName = this.actual().replaceAll("\\s", "").indexOf(",", positionComaId + 1);
+            String resultId = this.actual().replaceAll("\\s", "").toLowerCase().substring(0, positionComaId);
+            String resultName = this.actual().replaceAll("\\s", "").toLowerCase().substring(positionComaId, positionComaName);
+            if(value == resultId || value == resultName){
+                found = true;
+            }else{
+                this.actual = this.actual.getSiguiente();
+            }
+        }while(found == false || i <= this.size);
+        JOptionPane.showMessageDialog(null, "Pelicula encontrada " + this.actual.getMovie());
+        return this.actual.getMovie();
+>>>>>>> c0be8a86e66b845ad95b9b6e23912f42e260ff19
     }
     
     public void add(String movie){
@@ -90,17 +113,23 @@ public class ListaPeliculas {
             removeFromList.first.getAnterior().setSiguiente(null);
             removeFromList.first.setAnterior(null);
             removeFromList.actual = removeFromList.first;
+<<<<<<< HEAD
+=======
+            JOptionPane.showMessageDialog(null, removeFromList.actual.getMovie());
+>>>>>>> c0be8a86e66b845ad95b9b6e23912f42e260ff19
         }else if(removeFromList.actual == removeFromList.last){
             addToList.add(removeFromList.actual.getMovie());
             removeFromList.last = removeFromList.last.getAnterior();
             removeFromList.last.getSiguiente().setAnterior(null);
             removeFromList.last.setSiguiente(null);
             removeFromList.actual = removeFromList.last;
+            JOptionPane.showMessageDialog(null, removeFromList.actual.getMovie());
         }else{
             addToList.add(removeFromList.actual.getMovie());
             removeFromList.actual = removeFromList.actual.getAnterior();
             removeFromList.actual.setSiguiente(removeFromList.actual.getSiguiente().getSiguiente());
             removeFromList.actual.getSiguiente().getSiguiente().setAnterior(removeFromList.actual);
+            JOptionPane.showMessageDialog(null, removeFromList.actual.getMovie());
         }
         removeFromList.size--;
     }

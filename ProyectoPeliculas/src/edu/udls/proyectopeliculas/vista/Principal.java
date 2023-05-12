@@ -20,8 +20,8 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
-        txaDisponibles.setText(GestorArchivos.leerArchivo(listaDisponibles, "C:\\Users\\Chaca\\Documents\\OneDrive - Universidad La Salle Bajío\\Semestre Dos\\Programacion Estructurada y Orientada a Objetos\\OrientadaObjetos\\ProyectoPeliculas\\PeliculasDisponibles.csv"));
-        txaRentadas.setText(GestorArchivos.leerArchivo(listaRentadas, "C:\\Users\\Chaca\\Documents\\OneDrive - Universidad La Salle Bajío\\Semestre Dos\\Programacion Estructurada y Orientada a Objetos\\OrientadaObjetos\\ProyectoPeliculas\\PeliculasRentadas.csv"));
+        txaDisponibles.setText(GestorArchivos.leerArchivo(listaDisponibles, "C:\\Users\\Ivan\\Documents\\OneDrive - Universidad La Salle Bajío\\Semestre Dos\\Programacion Estructurada y Orientada a Objetos\\OrientadaObjetos\\ProyectoPeliculas\\PeliculasDisponibles.csv"));
+        txaRentadas.setText(GestorArchivos.leerArchivo(listaRentadas, "C:\\Users\\Ivan\\Documents\\OneDrive - Universidad La Salle Bajío\\Semestre Dos\\Programacion Estructurada y Orientada a Objetos\\OrientadaObjetos\\ProyectoPeliculas\\PeliculasRentadas.csv"));
         lblCantidadDisponibles.setText(Integer.toString(listaDisponibles.size()));
         lblCantidadRentadas.setText(Integer.toString(listaRentadas.size()));
         listaDisponibles.actual = listaDisponibles.first;
@@ -452,11 +452,14 @@ public class Principal extends javax.swing.JFrame {
         txaRentadas.setText(listaRentadas.enlist(listaRentadas));
         lblCantidadDisponibles.setText(Integer.toString(listaDisponibles.size()));
         lblCantidadRentadas.setText(Integer.toString(listaRentadas.size()));
+<<<<<<< HEAD
         if(listaDisponibles.size() > 0){
             txtActualDisponibles.setText(listaDisponibles.actual());
         }else{
             txtActualDisponibles.setText(null);
         }
+=======
+>>>>>>> c0be8a86e66b845ad95b9b6e23912f42e260ff19
     }//GEN-LAST:event_btnRentarActionPerformed
 
     private void btnRentarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentarTodoActionPerformed
@@ -499,7 +502,11 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnBuscarDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarDisponiblesActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
         txtActualDisponibles.setText(listaDisponibles.search(txtBuscadorDisponibles.getText()).getMovie());
+=======
+        txtActualDisponibles.setText(listaDisponibles.search(txtBuscadorDisponibles.getText()));
+>>>>>>> c0be8a86e66b845ad95b9b6e23912f42e260ff19
     }//GEN-LAST:event_btnBuscarDisponiblesActionPerformed
 
     /**
