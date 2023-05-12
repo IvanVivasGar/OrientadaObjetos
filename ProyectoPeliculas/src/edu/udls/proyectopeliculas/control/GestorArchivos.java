@@ -14,7 +14,7 @@ import java.io.FileReader;
  */
 
 public class GestorArchivos{
-        public static String leerArchivo(ListaPeliculas peliculas, String ruta){
+    public static String leerArchivo(ListaPeliculas peliculas, String ruta){
         int i = 0;
         String contenido = "";
         try{
@@ -25,7 +25,7 @@ public class GestorArchivos{
             //LEER CADA LINEA Y HAY QUE UNIRLO
             String linea = "";
             while((linea = br.readLine()) != null){
-                contenido += (i + 1) + ". " + linea + "\n";
+                contenido += linea + "\n";
                 peliculas.add(linea);
                 i++;
             }

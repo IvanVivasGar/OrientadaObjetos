@@ -37,19 +37,24 @@ public class ListaPeliculas {
         return this.actual.getMovie();
     }
     
-    public String search(int i){
-        String msg;
-        if(i <= this.size()){
-            actual = first;
-            for(int z = 0; z < i; z++){
-                actual = actual.getSiguiente();
-            }
-            msg = actual.getMovie();
-        }else{
-            msg = "La posicion solicitada no existe";
-        }
+    public Nodo search(String value){
+        boolean found = false;
+        int i = 0;
+        value = value.replaceAll("\\s", "").toLowerCase();
+        JOptionPane.showMessageDialog(null, value);
         
-        return msg;
+        this.actual = this.first;
+        do{
+            int positionComaId = this.actual().replaceAll("\\s", "").indexOf(",");
+            int positionComaName = this.actual().replaceAll("\\s", "").indexOf(",", positionComaId + 1);
+            if(this.actual().replaceAll("\\s", "").toLowerCase().substring(0, positionComaId) == value || this.actual().replaceAll("\\s", "").toLowerCase().substring(positionComaId + 1, positionComaName) == value){
+                found = true;
+                JOptionPane.showMessageDialog(null, "Pelicula encontrada " + this.actual.getMovie());
+            }else if(this.actual.getSiguiente() != null){
+                this.actual = this.actual.getSiguiente();
+            }
+        }while(found == false || i < this.size);
+        return this.actual;
     }
     
     public void add(String movie){
@@ -72,18 +77,27 @@ public class ListaPeliculas {
     }
     
     public static void move(ListaPeliculas removeFromList, ListaPeliculas addToList){
-        addToList.add(removeFromList.actual.getMovie());
-        if(removeFromList.actual == removeFromList.first){
+        
+        if(removeFromList.size == 0){
+            JOptionPane.showMessageDialog(null, "No hay peliculas para mover");
+        }
+        else if(removeFromList.size == 1){
+            addToList.add(removeFromList.actual.getMovie());
+            removeFromList.clean();
+        }else if(removeFromList.actual == removeFromList.first){
+            addToList.add(removeFromList.actual.getMovie());
             removeFromList.first = removeFromList.first.getSiguiente();
             removeFromList.first.getAnterior().setSiguiente(null);
             removeFromList.first.setAnterior(null);
-            removeFromList.actual = removeFromList.actual;
+            removeFromList.actual = removeFromList.first;
         }else if(removeFromList.actual == removeFromList.last){
+            addToList.add(removeFromList.actual.getMovie());
             removeFromList.last = removeFromList.last.getAnterior();
             removeFromList.last.getSiguiente().setAnterior(null);
             removeFromList.last.setSiguiente(null);
             removeFromList.actual = removeFromList.last;
         }else{
+            addToList.add(removeFromList.actual.getMovie());
             removeFromList.actual = removeFromList.actual.getAnterior();
             removeFromList.actual.setSiguiente(removeFromList.actual.getSiguiente().getSiguiente());
             removeFromList.actual.getSiguiente().getSiguiente().setAnterior(removeFromList.actual);
@@ -101,15 +115,35 @@ public class ListaPeliculas {
     }
     
     public String enlist(ListaPeliculas list){
-        int i = 1;
         String relist = "";
         
-        list.actual = list.first;
-        do{
-            relist += (i) + ". " + list.actual.getMovie() + "\n";
-            i++;
-            list.actual = list.actual.getSiguiente();
-        }while(list.actual != null);
+        if(list.actual != null){
+            int i = 1;
+            String temporalValue = list.actual.getMovie();
+            boolean reunitedValues = false;
+
+            if(list.size >= 1){
+                list.actual = list.first;
+                do{
+                    relist += (i) + ". " + list.actual.getMovie() + "\n";
+                    i++;
+                    list.actual = list.actual.getSiguiente();
+                }while(list.actual != null);
+            }else{
+                relist = " ";
+            }
+        
+            list.actual = list.first;
+            do{
+                if(list.actual() == temporalValue){
+                    reunitedValues = true;
+                }else{
+                    list.actual = list.actual.getSiguiente();
+                }
+            }while(reunitedValues == false);
+        }else{
+            relist = "";
+        }
         return relist;
     }
 }
