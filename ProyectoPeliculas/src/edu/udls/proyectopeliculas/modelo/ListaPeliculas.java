@@ -56,7 +56,7 @@ public class ListaPeliculas {
             }
         }while(found == false || i < this.size);
         return this.actual;
-=======
+
     public String search(String value){
         boolean found = false;
         int i = 0;
@@ -77,7 +77,6 @@ public class ListaPeliculas {
         }while(found == false || i <= this.size);
         JOptionPane.showMessageDialog(null, "Pelicula encontrada " + this.actual.getMovie());
         return this.actual.getMovie();
->>>>>>> c0be8a86e66b845ad95b9b6e23912f42e260ff19
     }
     
     public void add(String movie){
@@ -113,10 +112,7 @@ public class ListaPeliculas {
             removeFromList.first.getAnterior().setSiguiente(null);
             removeFromList.first.setAnterior(null);
             removeFromList.actual = removeFromList.first;
-<<<<<<< HEAD
-=======
             JOptionPane.showMessageDialog(null, removeFromList.actual.getMovie());
->>>>>>> c0be8a86e66b845ad95b9b6e23912f42e260ff19
         }else if(removeFromList.actual == removeFromList.last){
             addToList.add(removeFromList.actual.getMovie());
             removeFromList.last = removeFromList.last.getAnterior();

@@ -1,7 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+package edu.udls.proyectoblockbuster.control;
+import edu.udls.proyectoblockbuster.modelo.MovieList;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -11,8 +9,8 @@ import java.io.FileReader;
  * @author Ivan
  */
 
-public class GestorArchivos{
-    public static String leerArchivo(String ruta){
+public class ArchiveManager{
+    public static String leerArchivo(String ruta, MovieList movies){
         int i = 0;
         String contenido = "";
         try{
@@ -24,6 +22,7 @@ public class GestorArchivos{
             String linea = "";
             while((linea = br.readLine()) != null){
                 contenido += linea + "\n";
+                movies.add(linea);
                 i++;
             }
             //SE CIERRAN LOS ELEMENTOS

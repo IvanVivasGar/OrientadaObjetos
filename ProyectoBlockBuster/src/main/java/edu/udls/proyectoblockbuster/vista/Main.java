@@ -1,33 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package edu.udls.proyectopeliculas.vista;
-import edu.udls.proyectopeliculas.control.GestorArchivos;
-import edu.udls.proyectopeliculas.modelo.ListaPeliculas;
-import javax.swing.JOptionPane;
+package edu.udls.proyectoblockbuster.vista;
+import edu.udls.proyectoblockbuster.control.ArchiveManager;
+import edu.udls.proyectoblockbuster.modelo.MovieList;
 
 /**
  *
  * @author Ivan
  */
-public class Principal extends javax.swing.JFrame {
-    ListaPeliculas listaDisponibles = new ListaPeliculas();
-    ListaPeliculas listaRentadas = new ListaPeliculas();
+
+public class Main extends javax.swing.JFrame {
+    MovieList availableMovies = new MovieList();
+    MovieList rentedMovies = new MovieList();
     
-    /**
-     * Creates new form Principal
-     */
-    public Principal() {
+    public Main() {
         initComponents();
-        txaDisponibles.setText(GestorArchivos.leerArchivo(listaDisponibles, "C:\\Users\\Ivan\\Documents\\OneDrive - Universidad La Salle Bajío\\Semestre Dos\\Programacion Estructurada y Orientada a Objetos\\OrientadaObjetos\\ProyectoPeliculas\\PeliculasDisponibles.csv"));
-        txaRentadas.setText(GestorArchivos.leerArchivo(listaRentadas, "C:\\Users\\Ivan\\Documents\\OneDrive - Universidad La Salle Bajío\\Semestre Dos\\Programacion Estructurada y Orientada a Objetos\\OrientadaObjetos\\ProyectoPeliculas\\PeliculasRentadas.csv"));
-        lblCantidadDisponibles.setText(Integer.toString(listaDisponibles.size()));
-        lblCantidadRentadas.setText(Integer.toString(listaRentadas.size()));
-        listaDisponibles.actual = listaDisponibles.first;
-        listaRentadas.actual = listaRentadas.first;
-        txtActualDisponibles.setText(listaDisponibles.actual());
-        txtActualRentadas.setText(listaRentadas.actual());
+        txaDisponibles.setText(ArchiveManager.leerArchivo("C:\\Users\\Chaca\\Documents\\OneDrive - Universidad La Salle Bajío\\Semestre Dos\\Programacion Estructurada y Orientada a Objetos\\OrientadaObjetos\\ProyectoBlockBuster\\PeliculasDisponibles.csv", availableMovies));
+        txaRentadas.setText(ArchiveManager.leerArchivo("C:\\Users\\Chaca\\Documents\\OneDrive - Universidad La Salle Bajío\\Semestre Dos\\Programacion Estructurada y Orientada a Objetos\\OrientadaObjetos\\ProyectoBlockBuster\\PeliculasRentadas.csv", rentedMovies));
+        lblCantidadDisponibles.setText(Integer.toString(availableMovies.size()));
+        lblCantidadRentadas.setText(Integer.toString(rentedMovies.size()));
+        availableMovies.current = availableMovies.first;
+        rentedMovies.current = rentedMovies.first;
+        txtActualDisponibles.setText(availableMovies.current());
+        txtActualRentadas.setText(rentedMovies.current());
     }
 
     /**
@@ -398,118 +391,112 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInicioDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioDisponiblesActionPerformed
-        // TODO add your handling code here:
-        listaDisponibles.actual = listaDisponibles.first;
-        txtActualDisponibles.setText(listaDisponibles.actual());
+        availableMovies.current = availableMovies.first;
+        txtActualDisponibles.setText(availableMovies.current());
     }//GEN-LAST:event_btnInicioDisponiblesActionPerformed
 
-    private void btnFinDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinDisponiblesActionPerformed
-        // TODO add your handling code here:
-        listaDisponibles.actual = listaDisponibles.last;
-        txtActualDisponibles.setText(listaDisponibles.actual());
-    }//GEN-LAST:event_btnFinDisponiblesActionPerformed
-
-    private void btnInicioRentadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioRentadasActionPerformed
-        // TODO add your handling code here:
-        listaRentadas.actual = listaRentadas.first;
-        txtActualRentadas.setText(listaRentadas.actual());
-    }//GEN-LAST:event_btnInicioRentadasActionPerformed
-
-    private void btnFinRentadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinRentadasActionPerformed
-        // TODO add your handling code here:
-        listaRentadas.actual = listaRentadas.last;
-        txtActualRentadas.setText(listaRentadas.actual());
-    }//GEN-LAST:event_btnFinRentadasActionPerformed
-
     private void btnAnteriorDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorDisponiblesActionPerformed
-        // TODO add your handling code here:
-        if(listaDisponibles.first() != listaDisponibles.actual()){
-            listaDisponibles.actual = listaDisponibles.actual.getAnterior();
-            txtActualDisponibles.setText(listaDisponibles.actual());
+        if(availableMovies.first() != availableMovies.current()){
+            availableMovies.current = availableMovies.current.getPrevious();
+            txtActualDisponibles.setText(availableMovies.current());
         }
     }//GEN-LAST:event_btnAnteriorDisponiblesActionPerformed
 
     private void btnSiguienteDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteDisponiblesActionPerformed
-        // TODO add your handling code here:
-        if(listaDisponibles.last() != listaDisponibles.actual()){
-            listaDisponibles.actual = listaDisponibles.actual.getSiguiente();
-            txtActualDisponibles.setText(listaDisponibles.actual());
+        if(availableMovies.last() != availableMovies.current()){
+            availableMovies.current = availableMovies.current.getNext();
+            txtActualDisponibles.setText(availableMovies.current());
         }
     }//GEN-LAST:event_btnSiguienteDisponiblesActionPerformed
 
+    private void btnFinDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinDisponiblesActionPerformed
+        availableMovies.current = availableMovies.last;
+        txtActualDisponibles.setText(availableMovies.current());
+    }//GEN-LAST:event_btnFinDisponiblesActionPerformed
+
+    private void btnInicioRentadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioRentadasActionPerformed
+        rentedMovies.current = rentedMovies.first;
+        txtActualRentadas.setText(rentedMovies.current());
+    }//GEN-LAST:event_btnInicioRentadasActionPerformed
+
     private void btnAnteriorRentadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorRentadasActionPerformed
-        // TODO add your handling code here:
-        if(listaRentadas.first() != listaRentadas.actual()){
-            listaRentadas.actual = listaRentadas.actual.getAnterior();
-            txtActualRentadas.setText(listaRentadas.actual());
+        if(rentedMovies.first() != rentedMovies.current()){
+            rentedMovies.current = rentedMovies.current.getPrevious();
+            txtActualRentadas.setText(rentedMovies.current());
         }
     }//GEN-LAST:event_btnAnteriorRentadasActionPerformed
 
+    private void btnSiguienteRentadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteRentadasActionPerformed
+        if(rentedMovies.last() != rentedMovies.current()){
+            rentedMovies.current = rentedMovies.current.getNext();
+            txtActualRentadas.setText(rentedMovies.current());
+        }
+    }//GEN-LAST:event_btnSiguienteRentadasActionPerformed
+
+    private void btnFinRentadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinRentadasActionPerformed
+        rentedMovies.current = rentedMovies.last;
+        txtActualRentadas.setText(rentedMovies.current());
+    }//GEN-LAST:event_btnFinRentadasActionPerformed
+
     private void btnRentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentarActionPerformed
-        // TODO add your handling code here:
-        ListaPeliculas.move(listaDisponibles, listaRentadas);
-        txaDisponibles.setText(listaDisponibles.enlist(listaDisponibles));
-        txaRentadas.setText(listaRentadas.enlist(listaRentadas));
-        lblCantidadDisponibles.setText(Integer.toString(listaDisponibles.size()));
-        lblCantidadRentadas.setText(Integer.toString(listaRentadas.size()));
-        if(listaDisponibles.size() > 0){
-            txtActualDisponibles.setText(listaDisponibles.actual());
+        availableMovies.move(rentedMovies);
+        txaDisponibles.setText(availableMovies.enlist(availableMovies));
+        txaRentadas.setText(rentedMovies.enlist(rentedMovies));
+        lblCantidadDisponibles.setText(Integer.toString(availableMovies.size()));
+        lblCantidadRentadas.setText(Integer.toString(rentedMovies.size()));
+        if(availableMovies.size() > 0){
+            txtActualDisponibles.setText(availableMovies.current());
         }else{
             txtActualDisponibles.setText(null);
         }
     }//GEN-LAST:event_btnRentarActionPerformed
 
-    private void btnRentarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentarTodoActionPerformed
-        // TODO add your handling code here:
-        ListaPeliculas.moveAll(listaDisponibles, listaRentadas);
-        txaDisponibles.setText(null);
-        txaRentadas.setText(listaRentadas.enlist(listaRentadas));
-        lblCantidadDisponibles.setText(Integer.toString(listaDisponibles.size()));
-        lblCantidadRentadas.setText(Integer.toString(listaRentadas.size()));
-        txtActualDisponibles.setText(null);
-    }//GEN-LAST:event_btnRentarTodoActionPerformed
-
     private void btnDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverActionPerformed
-        // TODO add your handling code here:
-        ListaPeliculas.move(listaRentadas, listaDisponibles);
-        txaDisponibles.setText(listaDisponibles.enlist(listaDisponibles));
-        txaRentadas.setText(listaRentadas.enlist(listaRentadas));
-        lblCantidadDisponibles.setText(Integer.toString(listaDisponibles.size()));
-        lblCantidadRentadas.setText(Integer.toString(listaRentadas.size()));
-        txtActualRentadas.setText(listaRentadas.actual());
+        rentedMovies.move(availableMovies);
+        txaRentadas.setText(rentedMovies.enlist(rentedMovies));
+        txaDisponibles.setText(availableMovies.enlist(availableMovies));
+        lblCantidadRentadas.setText(Integer.toString(rentedMovies.size()));
+        lblCantidadDisponibles.setText(Integer.toString(availableMovies.size()));
+        if(rentedMovies.size() > 0){
+            txtActualRentadas.setText(rentedMovies.current());
+        }else{
+            txtActualRentadas.setText(null);
+        }   
     }//GEN-LAST:event_btnDevolverActionPerformed
 
-    private void btnSiguienteRentadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteRentadasActionPerformed
-        // TODO add your handling code here:
-        if(listaRentadas.last() != listaRentadas.actual()){
-            listaRentadas.actual = listaRentadas.actual.getSiguiente();
-            txtActualRentadas.setText(listaRentadas.actual());
+    private void btnRentarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentarTodoActionPerformed
+        if(availableMovies.size() > 0){
+            availableMovies.moveAll(rentedMovies);
+            txaDisponibles.setText(null);
+            txaRentadas.setText(rentedMovies.enlist(rentedMovies));
+            lblCantidadDisponibles.setText(Integer.toString(availableMovies.size()));
+            lblCantidadRentadas.setText(Integer.toString(rentedMovies.size()));
+            txtActualDisponibles.setText(null);
+            txtActualRentadas.setText(rentedMovies.current());
         }
-    }//GEN-LAST:event_btnSiguienteRentadasActionPerformed
+    }//GEN-LAST:event_btnRentarTodoActionPerformed
 
     private void btnDevolverTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverTodoActionPerformed
-        // TODO add your handling code here:
-        ListaPeliculas.moveAll(listaRentadas, listaDisponibles);
-        txaRentadas.setText(null);
-        txaDisponibles.setText(listaDisponibles.enlist(listaDisponibles));
-        lblCantidadDisponibles.setText(Integer.toString(listaDisponibles.size()));
-        lblCantidadRentadas.setText(Integer.toString(listaRentadas.size()));
-        txtActualRentadas.setText(null);
+        if(rentedMovies.size() > 0){
+            rentedMovies.moveAll(availableMovies);
+            txaRentadas.setText(null);
+            txaDisponibles.setText(availableMovies.enlist(availableMovies));
+            lblCantidadRentadas.setText(Integer.toString(rentedMovies.size()));
+            lblCantidadDisponibles.setText(Integer.toString(availableMovies.size()));
+            txtActualRentadas.setText(null);
+            txtActualDisponibles.setText(availableMovies.current());
+        }
     }//GEN-LAST:event_btnDevolverTodoActionPerformed
 
     private void btnBuscarDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarDisponiblesActionPerformed
-        // TODO add your handling code here:
-<<<<<<< HEAD
-        txtActualDisponibles.setText(listaDisponibles.search(txtBuscadorDisponibles.getText()).getMovie());
-=======
-        txtActualDisponibles.setText(listaDisponibles.search(txtBuscadorDisponibles.getText()));
->>>>>>> c0be8a86e66b845ad95b9b6e23912f42e260ff19
+        availableMovies.search(txtBuscadorDisponibles.getText());
+        txtActualDisponibles.setText(availableMovies.current());
     }//GEN-LAST:event_btnBuscarDisponiblesActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]){
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -523,23 +510,21 @@ public class Principal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Principal().setVisible(true);
-            }
-        }
-        );
+        java.awt.EventQueue.invokeLater(() -> {
+            new Main().setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
