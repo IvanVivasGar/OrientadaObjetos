@@ -18,15 +18,15 @@ public class MovieList {
     }
     
     public String first(){
-        return this.first.getMovieName() + this.first.getMovieId() + this.first.getMovieGenre() + this.first.getMovieYear() + this.first.getMovieLength();
+        return this.first.getMovieId() + this.first.getMovieName() + this.first.getMovieGenre() + this.first.getMovieYear() + this.first.getMovieLength();
     }
     
     public String current(){
-        return this.current.getMovieName() + this.current.getMovieId() + this.current.getMovieGenre() + this.current.getMovieYear() + this.current.getMovieLength();
+        return this.current.getMovieId() + this.current.getMovieName() + this.current.getMovieGenre() + this.current.getMovieYear() + this.current.getMovieLength();
     }
     
     public String last(){
-        return this.last.getMovieName() + this.last.getMovieId() + this.last.getMovieGenre() + this.last.getMovieYear() + this.last.getMovieLength();
+        return this.last.getMovieId() + this.last.getMovieName() + this.last.getMovieGenre() + this.last.getMovieYear() + this.last.getMovieLength();
     }
     
     public void clean(){
@@ -133,7 +133,7 @@ public class MovieList {
             //CICLO QUE RECORRERA DE PELICULA EN PELICULA Y LA AGREGARA AL STRING PARA MOSTRARLO EN PANTALLA
             list.current = list.first;
             do{
-                relist += (i) + ". " + list.current.getMovieId() + "," + list.current.getMovieName() + "," + list.current.getMovieGenre() + "," + list.current.getMovieYear() + "," + list.current.getMovieLength() + "\n";
+                relist += list.current.getMovieId() + list.current.getMovieName() + list.current.getMovieGenre() + list.current.getMovieYear() + list.current.getMovieLength() + "\n";
                 i++;
                 list.current = list.current.getNext();
             }while(list.current != null);

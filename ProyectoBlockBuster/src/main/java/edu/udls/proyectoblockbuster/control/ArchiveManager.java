@@ -3,6 +3,7 @@ import edu.udls.proyectoblockbuster.modelo.MovieList;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,14 +25,14 @@ public class ArchiveManager{
                 content += line + "\n";
                 int positionComaId = line.indexOf(",");
                 int positionComaName = line.indexOf(",", positionComaId + 1);
-                int positionComaGenre = line.indexOf(",", positionComaId + 2);
-                int positionComaYear = line.indexOf(",", positionComaId + 3);
+                int positionComaGenre = line.indexOf(",", positionComaName + 1);
+                int positionComaYear = line.indexOf(",", positionComaGenre + 1);
                 movies.add(
                         line.substring(0, positionComaId), 
-                        line.substring(positionComaId + 1, positionComaName),
-                        line.substring(positionComaName + 1, positionComaGenre),
-                        line.substring(positionComaGenre + 1, positionComaYear),
-                        line.substring(positionComaYear + 1)
+                        line.substring(positionComaId, positionComaName),
+                        line.substring(positionComaName, positionComaGenre),
+                        line.substring(positionComaGenre, positionComaYear),
+                        line.substring(positionComaYear)
                 );
                 i++;
             }

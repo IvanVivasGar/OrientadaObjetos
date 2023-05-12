@@ -6,8 +6,8 @@ package edu.udls.proyectoblockbuster.modelo;
  */
 
 public class Node {
-    private String movieName;
     private String movieId;
+    private String movieName;
     private String movieGenre;
     private String movieYear;
     private String movieLength;
@@ -15,14 +15,6 @@ public class Node {
     private Node next;
     
     public Node(){}
-    
-    public void setMovieName(String movieName){
-        this.movieName = movieName;
-    }
-    
-    public String getMovieName(){
-        return this.movieName;
-    }
     
     public void setPrevious(Node previous){
         this.previous = previous;
@@ -48,6 +40,14 @@ public class Node {
         this.movieId = movieId;
     }
 
+    public void setMovieName(String movieName){
+        this.movieName = movieName;
+    }
+    
+    public String getMovieName(){
+        return this.movieName;
+    }
+    
     public String getMovieGenre() {
         return movieGenre;
     }

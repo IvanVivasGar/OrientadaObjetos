@@ -396,14 +396,14 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInicioDisponiblesActionPerformed
 
     private void btnAnteriorDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorDisponiblesActionPerformed
-        if(availableMovies.first() != availableMovies.current()){
+        if(availableMovies.first() != availableMovies.current() && availableMovies.size() > 1){
             availableMovies.current = availableMovies.current.getPrevious();
             txtActualDisponibles.setText(availableMovies.current());
         }
     }//GEN-LAST:event_btnAnteriorDisponiblesActionPerformed
 
     private void btnSiguienteDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteDisponiblesActionPerformed
-        if(availableMovies.last() != availableMovies.current()){
+        if(availableMovies.last() != availableMovies.current() && availableMovies.size() > 1){
             availableMovies.current = availableMovies.current.getNext();
             txtActualDisponibles.setText(availableMovies.current());
         }
@@ -420,14 +420,14 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInicioRentadasActionPerformed
 
     private void btnAnteriorRentadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorRentadasActionPerformed
-        if(rentedMovies.first() != rentedMovies.current()){
+        if(rentedMovies.first() != rentedMovies.current() && rentedMovies.size() > 1){
             rentedMovies.current = rentedMovies.current.getPrevious();
             txtActualRentadas.setText(rentedMovies.current());
         }
     }//GEN-LAST:event_btnAnteriorRentadasActionPerformed
 
     private void btnSiguienteRentadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteRentadasActionPerformed
-        if(rentedMovies.last() != rentedMovies.current()){
+        if(rentedMovies.last() != rentedMovies.current() && rentedMovies.size() > 1){
             rentedMovies.current = rentedMovies.current.getNext();
             txtActualRentadas.setText(rentedMovies.current());
         }
