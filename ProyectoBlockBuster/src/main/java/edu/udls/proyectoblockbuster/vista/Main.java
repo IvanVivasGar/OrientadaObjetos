@@ -446,6 +446,7 @@ public class Main extends javax.swing.JFrame {
         lblCantidadRentadas.setText(Integer.toString(rentedMovies.size()));
         if(availableMovies.size() > 0){
             txtActualDisponibles.setText(availableMovies.current());
+            txtActualRentadas.setText(rentedMovies.current());
         }else{
             txtActualDisponibles.setText(null);
         }
@@ -459,6 +460,7 @@ public class Main extends javax.swing.JFrame {
         lblCantidadDisponibles.setText(Integer.toString(availableMovies.size()));
         if(rentedMovies.size() > 0){
             txtActualRentadas.setText(rentedMovies.current());
+            txtActualDisponibles.setText(availableMovies.current());
         }else{
             txtActualRentadas.setText(null);
         }   

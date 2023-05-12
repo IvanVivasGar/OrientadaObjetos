@@ -18,15 +18,15 @@ public class MovieList {
     }
     
     public String first(){
-        return this.first.getMovie();
+        return this.first.getMovieName() + this.first.getMovieId() + this.first.getMovieGenre() + this.first.getMovieYear() + this.first.getMovieLength();
     }
     
     public String current(){
-        return this.current.getMovie();
+        return this.current.getMovieName() + this.current.getMovieId() + this.current.getMovieGenre() + this.current.getMovieYear() + this.current.getMovieLength();
     }
     
     public String last(){
-        return this.last.getMovie();
+        return this.last.getMovieName() + this.last.getMovieId() + this.last.getMovieGenre() + this.last.getMovieYear() + this.last.getMovieLength();
     }
     
     public void clean(){
@@ -36,9 +36,13 @@ public class MovieList {
         this.size = 0;
     }
     
-    public void add(String movie){
+    public void add(String movieId, String movieName, String movieGenre, String movieYear, String movieLength){
         Node toAdd = new Node();
-        toAdd.setMovie(movie);
+        toAdd.setMovieId(movieId);
+        toAdd.setMovieName(movieName);
+        toAdd.setMovieGenre(movieGenre);
+        toAdd.setMovieYear(movieYear);
+        toAdd.setMovieLength(movieLength);
         this.current = toAdd;
         
         if (this.size == 0){
@@ -46,11 +50,13 @@ public class MovieList {
             this.last = toAdd;
             toAdd.setPrevious(null);
             toAdd.setNext(null);
+            this.current = this.first;
         }else {
             toAdd.setNext(null);
             toAdd.setPrevious(last);
             last.setNext(toAdd);
             last = toAdd;
+            this.current = this.last;
         }
         size++;
     }
@@ -60,24 +66,24 @@ public class MovieList {
             JOptionPane.showMessageDialog(null, "No hay peliculas para mover");
         }
         else if(this.size == 1){
-            destinationList.add(this.current.getMovie());
+            destinationList.add(this.current.getMovieId(), this.current.getMovieName(), this.current.getMovieGenre(), this.current.getMovieYear(), this.current.getMovieLength());
             this.clean();
         }else if(this.current == this.first){
-            destinationList.add(this.current.getMovie());
+            destinationList.add(this.current.getMovieId(), this.current.getMovieName(), this.current.getMovieGenre(), this.current.getMovieYear(), this.current.getMovieLength());
             this.first = this.first.getNext();
             this.first.getPrevious().setNext(null);
             this.first.setPrevious(null);
             this.current = this.first;
             this.size--;
         }else if(this.current == this.last){
-            destinationList.add(this.current.getMovie());
+            destinationList.add(this.current.getMovieId(), this.current.getMovieName(), this.current.getMovieGenre(), this.current.getMovieYear(), this.current.getMovieLength());
             this.last = this.last.getPrevious();
             this.last.getNext().setPrevious(null);
             this.last.setNext(null);
             this.current = this.last;
             this.size--;
         }else{
-            destinationList.add(this.current.getMovie());
+            destinationList.add(this.current.getMovieId(), this.current.getMovieName(), this.current.getMovieGenre(), this.current.getMovieYear(), this.current.getMovieLength());
             this.current = this.current.getPrevious();
             this.current.setNext(this.current.getNext().getNext());
             this.current.getNext().getNext().setPrevious(this.current);
@@ -88,14 +94,13 @@ public class MovieList {
     public void moveAll(MovieList destinationList){
         this.current = this.first;
         do{
-            destinationList.add(this.current.getMovie());
+            destinationList.add(this.current.getMovieId(), this.current.getMovieName(), this.current.getMovieGenre(), this.current.getMovieYear(), this.current.getMovieLength());
             this.current = this.current.getNext();
         }while(this.current != null);
         this.clean();
     }
     
     public void search(String value){
-        String message = "";
         boolean found = false;
         int i = 0;
         value = value.replaceAll("\\s", "").toLowerCase();
@@ -107,10 +112,11 @@ public class MovieList {
             int positionComaName = this.current().replaceAll("\\s", "").indexOf(",", positionComaId + 1);
             if(this.current().replaceAll("\\s", "").toLowerCase().substring(0, positionComaId) == value || this.current().replaceAll("\\s", "").toLowerCase().substring(positionComaId + 1, positionComaName) == value){
                 found = true;
-                JOptionPane.showMessageDialog(null, "Pelicula encontrada " + this.current.getMovie());
+                JOptionPane.showMessageDialog(null, "Pelicula encontrada " + this.current.getMovieName());
             }else if(this.current.getNext() != null && found != true){
                 this.current = this.current.getNext();
             }
+            i++;
         }while(found == false || i < this.size);
     }
     
@@ -121,13 +127,13 @@ public class MovieList {
         if(list.current != null){
             int i = 1;
             //UN STRING QUE GUARDA EL VALOR DE LA PELICULA ACTUAL PARA QUE AL PASAR DE PELICULA A PELICULA, AL FINAL LA PELICULA SIGA SIENDO LA ACTUAL EN LA QUE EL USUARIO SE QUEDO
-            String temporalValue = list.current.getMovie();
+            Node temporalValue = list.current;
             boolean reunitedValues = false;
 
             //CICLO QUE RECORRERA DE PELICULA EN PELICULA Y LA AGREGARA AL STRING PARA MOSTRARLO EN PANTALLA
             list.current = list.first;
             do{
-                relist += (i) + ". " + list.current.getMovie() + "\n";
+                relist += (i) + ". " + list.current.getMovieId() + "," + list.current.getMovieName() + "," + list.current.getMovieGenre() + "," + list.current.getMovieYear() + "," + list.current.getMovieLength() + "\n";
                 i++;
                 list.current = list.current.getNext();
             }while(list.current != null);
@@ -135,7 +141,7 @@ public class MovieList {
             //CICLO QUE ESTABLECERA EL ACTUAL COMO EL ACTUAL CON EL QUE ENTRO AL METODO, BUSCANDO UNA IGUALDAD ENTRE EL TEMPORALVALUE Y EL GETMOVIE() DEL NODO ACTUAL
             list.current = list.first;
             do{
-                if(list.current.getMovie() == temporalValue){
+                if(list.current == temporalValue){
                     reunitedValues = true;
                 }else{
                     list.current = list.current.getNext();
