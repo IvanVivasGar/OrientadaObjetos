@@ -20,10 +20,14 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
-        txaDisponibles.setText(GestorArchivos.leerArchivo(listaDisponibles, "C:\\Users\\Chaca\\Documents\\OneDrive - Universidad La Salle Bajío\\Semestre Dos\\Programacion Estructurada y Orientada a Objetos\\OrientadaObjetos\\ProyectoPeliculas\\PeliculasDisponibles.csv"));
-        txaRentadas.setText(GestorArchivos.leerArchivo(listaRentadas, "C:\\Users\\Chaca\\Documents\\OneDrive - Universidad La Salle Bajío\\Semestre Dos\\Programacion Estructurada y Orientada a Objetos\\OrientadaObjetos\\ProyectoPeliculas\\PeliculasRentadas.csv"));
+        txaDisponibles.setText(GestorArchivos.leerArchivo(listaDisponibles, "C:\\Users\\Ivan\\Documents\\OneDrive - Universidad La Salle Bajío\\Semestre Dos\\Programacion Estructurada y Orientada a Objetos\\OrientadaObjetos\\ProyectoPeliculas\\PeliculasDisponibles.csv"));
+        txaRentadas.setText(GestorArchivos.leerArchivo(listaRentadas, "C:\\Users\\Ivan\\Documents\\OneDrive - Universidad La Salle Bajío\\Semestre Dos\\Programacion Estructurada y Orientada a Objetos\\OrientadaObjetos\\ProyectoPeliculas\\PeliculasRentadas.csv"));
         lblCantidadDisponibles.setText(Integer.toString(listaDisponibles.size()));
         lblCantidadRentadas.setText(Integer.toString(listaRentadas.size()));
+        listaDisponibles.actual = listaDisponibles.first;
+        listaRentadas.actual = listaRentadas.first;
+        txtActualDisponibles.setText(listaDisponibles.actual());
+        txtActualRentadas.setText(listaRentadas.actual());
     }
 
     /**
@@ -51,8 +55,8 @@ public class Principal extends javax.swing.JFrame {
         btnSiguienteRentadas = new javax.swing.JButton();
         txtActualDisponibles = new javax.swing.JTextField();
         txtActualRentadas = new javax.swing.JTextField();
-        btnBuscar = new javax.swing.JButton();
-        txtBuscador = new javax.swing.JTextField();
+        btnBuscarDisponibles = new javax.swing.JButton();
+        txtBuscadorDisponibles = new javax.swing.JTextField();
         btnRentar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -64,6 +68,8 @@ public class Principal extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         lblCantidadRentadas = new javax.swing.JLabel();
         btnSiguienteDisponibles = new javax.swing.JButton();
+        btnBuscarRentadas = new javax.swing.JButton();
+        txtBuscadorRentadas = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -161,13 +167,18 @@ public class Principal extends javax.swing.JFrame {
         txtActualRentadas.setBackground(new java.awt.Color(255, 255, 255));
         txtActualRentadas.setForeground(new java.awt.Color(0, 0, 0));
 
-        btnBuscar.setBackground(new java.awt.Color(255, 255, 0));
-        btnBuscar.setForeground(new java.awt.Color(0, 0, 153));
-        btnBuscar.setText("Buscar");
+        btnBuscarDisponibles.setBackground(new java.awt.Color(255, 255, 0));
+        btnBuscarDisponibles.setForeground(new java.awt.Color(0, 0, 153));
+        btnBuscarDisponibles.setText("Buscar");
+        btnBuscarDisponibles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarDisponiblesActionPerformed(evt);
+            }
+        });
 
-        txtBuscador.setBackground(new java.awt.Color(255, 255, 255));
-        txtBuscador.setForeground(new java.awt.Color(153, 153, 153));
-        txtBuscador.setText("Pelicula...");
+        txtBuscadorDisponibles.setBackground(new java.awt.Color(255, 255, 255));
+        txtBuscadorDisponibles.setForeground(new java.awt.Color(102, 102, 102));
+        txtBuscadorDisponibles.setText("Pelicula...");
 
         btnRentar.setBackground(new java.awt.Color(255, 255, 0));
         btnRentar.setForeground(new java.awt.Color(0, 0, 153));
@@ -232,6 +243,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        btnBuscarRentadas.setBackground(new java.awt.Color(255, 255, 0));
+        btnBuscarRentadas.setForeground(new java.awt.Color(0, 0, 204));
+        btnBuscarRentadas.setText("Buscar");
+
+        txtBuscadorRentadas.setBackground(new java.awt.Color(255, 255, 255));
+        txtBuscadorRentadas.setForeground(new java.awt.Color(102, 102, 102));
+        txtBuscadorRentadas.setText("Pelicula...");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -239,10 +258,6 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnBuscar)
-                        .addGap(15, 15, 15)
-                        .addComponent(txtBuscador))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -260,10 +275,6 @@ public class Principal extends javax.swing.JFrame {
                                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtActualRentadas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(btnDevolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnRentarTodo, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDevolverTodo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -295,7 +306,21 @@ public class Principal extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                                     .addComponent(btnSiguienteRentadas, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnFinRentadas, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(btnFinRentadas, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnBuscarDisponibles)
+                                .addGap(15, 15, 15)
+                                .addComponent(txtBuscadorDisponibles))
+                            .addComponent(btnRentarTodo, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnDevolverTodo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnBuscarRentadas, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtBuscadorRentadas)))))
                 .addContainerGap(30, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -346,9 +371,11 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(btnDevolverTodo))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBuscar)
-                    .addComponent(txtBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30))
+                    .addComponent(btnBuscarDisponibles)
+                    .addComponent(txtBuscadorDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarRentadas)
+                    .addComponent(txtBuscadorRentadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(48, 48, 48)
@@ -425,7 +452,6 @@ public class Principal extends javax.swing.JFrame {
         txaRentadas.setText(listaRentadas.enlist(listaRentadas));
         lblCantidadDisponibles.setText(Integer.toString(listaDisponibles.size()));
         lblCantidadRentadas.setText(Integer.toString(listaRentadas.size()));
-        txtActualDisponibles.setText(listaDisponibles.actual());
     }//GEN-LAST:event_btnRentarActionPerformed
 
     private void btnRentarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentarTodoActionPerformed
@@ -463,8 +489,13 @@ public class Principal extends javax.swing.JFrame {
         txaDisponibles.setText(listaDisponibles.enlist(listaDisponibles));
         lblCantidadDisponibles.setText(Integer.toString(listaDisponibles.size()));
         lblCantidadRentadas.setText(Integer.toString(listaRentadas.size()));
-        txtActualRentadas.setText(listaRentadas.actual());
+        txtActualRentadas.setText(null);
     }//GEN-LAST:event_btnDevolverTodoActionPerformed
+
+    private void btnBuscarDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarDisponiblesActionPerformed
+        // TODO add your handling code here:
+        txtActualDisponibles.setText(listaDisponibles.search(txtBuscadorDisponibles.getText()));
+    }//GEN-LAST:event_btnBuscarDisponiblesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -505,7 +536,8 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnteriorDisponibles;
     private javax.swing.JButton btnAnteriorRentadas;
-    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnBuscarDisponibles;
+    private javax.swing.JButton btnBuscarRentadas;
     private javax.swing.JButton btnDevolver;
     private javax.swing.JButton btnDevolverTodo;
     private javax.swing.JButton btnFinDisponibles;
@@ -531,6 +563,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextArea txaRentadas;
     private javax.swing.JTextField txtActualDisponibles;
     private javax.swing.JTextField txtActualRentadas;
-    private javax.swing.JTextField txtBuscador;
+    private javax.swing.JTextField txtBuscadorDisponibles;
+    private javax.swing.JTextField txtBuscadorRentadas;
     // End of variables declaration//GEN-END:variables
 }
