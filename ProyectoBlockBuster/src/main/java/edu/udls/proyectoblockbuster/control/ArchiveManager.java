@@ -1,8 +1,10 @@
 package edu.udls.proyectoblockbuster.control;
 import edu.udls.proyectoblockbuster.modelo.MovieList;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,7 +14,6 @@ import javax.swing.JOptionPane;
 
 public class ArchiveManager{
     public static String leerArchivo(String ruta, MovieList movies){
-        int i = 0;
         String content = "";
         try{
             File archivo = new File(ruta); //SE ABRE EL ARCHIVO
@@ -34,7 +35,6 @@ public class ArchiveManager{
                         line.substring(positionComaGenre, positionComaYear),
                         line.substring(positionComaYear)
                 );
-                i++;
             }
             //SE CIERRAN LOS ELEMENTOS
             br.close();
@@ -45,5 +45,24 @@ public class ArchiveManager{
             content = "Error en la lectura del archivo" + e.toString();
         }
         return content;
+    }
+    
+    public static void reescribirArchivo(String route, MovieList movies){
+        try{
+            BufferedWriter bw = new BufferedWriter(new FileWriter(route, false));
+            
+            movies.current = movies.first;
+            while(movies.current != null){
+                String line = movies.current.getMovieId() + movies.current.getMovieName() + movies.current.getMovieGenre() + movies.current.getMovieYear() + movies.current.getMovieLength();
+                bw.write(line);
+                bw.newLine();
+                movies.current = movies.current.getNext();
+            }
+            bw.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error en la reescritura del archivo");
+        }
     }
 }

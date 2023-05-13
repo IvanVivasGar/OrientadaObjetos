@@ -159,8 +159,6 @@ public class ArchiveLocations extends javax.swing.JFrame {
     }//GEN-LAST:event_buscadorPeliculasRentadasActionPerformed
 
     private void btnReadyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadyActionPerformed
-        JOptionPane.showMessageDialog(null, routeAvailableMovies);
-        JOptionPane.showMessageDialog(null, routeRentedMovies);
         if(txtAvailableMovies.getText() != null && txtRentedMovies != null){
             Main interfazPrincipal = new Main();
             interfazPrincipal.show();
