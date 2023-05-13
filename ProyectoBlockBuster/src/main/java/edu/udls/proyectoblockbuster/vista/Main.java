@@ -1,6 +1,7 @@
 package edu.udls.proyectoblockbuster.vista;
 import edu.udls.proyectoblockbuster.control.ArchiveManager;
 import edu.udls.proyectoblockbuster.modelo.MovieList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,8 +14,8 @@ public class Main extends javax.swing.JFrame {
     
     public Main() {
         initComponents();
-        txaDisponibles.setText(ArchiveManager.leerArchivo("C:\\Users\\Chaca\\Documents\\OneDrive - Universidad La Salle Bajío\\Semestre Dos\\Programacion Estructurada y Orientada a Objetos\\OrientadaObjetos\\ProyectoBlockBuster\\PeliculasDisponibles.csv", availableMovies));
-        txaRentadas.setText(ArchiveManager.leerArchivo("C:\\Users\\Chaca\\Documents\\OneDrive - Universidad La Salle Bajío\\Semestre Dos\\Programacion Estructurada y Orientada a Objetos\\OrientadaObjetos\\ProyectoBlockBuster\\PeliculasRentadas.csv", rentedMovies));
+        txaDisponibles.setText(ArchiveManager.leerArchivo(ArchiveLocations.routeAvailableMovies, availableMovies));
+        txaRentadas.setText(ArchiveManager.leerArchivo(ArchiveLocations.routeRentedMovies, rentedMovies));
         lblCantidadDisponibles.setText(Integer.toString(availableMovies.size()));
         lblCantidadRentadas.setText(Integer.toString(rentedMovies.size()));
         availableMovies.current = availableMovies.first;
@@ -79,12 +80,14 @@ public class Main extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("PELICULAS RENTADAS");
 
+        txaDisponibles.setEditable(false);
         txaDisponibles.setBackground(new java.awt.Color(255, 255, 255));
         txaDisponibles.setColumns(20);
         txaDisponibles.setForeground(new java.awt.Color(0, 0, 0));
         txaDisponibles.setRows(5);
         jScrollPane2.setViewportView(txaDisponibles);
 
+        txaRentadas.setEditable(false);
         txaRentadas.setBackground(new java.awt.Color(255, 255, 255));
         txaRentadas.setColumns(20);
         txaRentadas.setForeground(new java.awt.Color(0, 0, 0));
@@ -154,9 +157,11 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        txtActualDisponibles.setEditable(false);
         txtActualDisponibles.setBackground(new java.awt.Color(255, 255, 255));
         txtActualDisponibles.setForeground(new java.awt.Color(0, 0, 0));
 
+        txtActualRentadas.setEditable(false);
         txtActualRentadas.setBackground(new java.awt.Color(255, 255, 255));
         txtActualRentadas.setForeground(new java.awt.Color(0, 0, 0));
 
