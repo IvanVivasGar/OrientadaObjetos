@@ -239,6 +239,11 @@ public class Main extends javax.swing.JFrame {
         btnBuscarRentadas.setBackground(new java.awt.Color(255, 255, 0));
         btnBuscarRentadas.setForeground(new java.awt.Color(0, 0, 204));
         btnBuscarRentadas.setText("Buscar");
+        btnBuscarRentadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarRentadasActionPerformed(evt);
+            }
+        });
 
         txtBuscadorRentadas.setBackground(new java.awt.Color(255, 255, 255));
         txtBuscadorRentadas.setForeground(new java.awt.Color(102, 102, 102));
@@ -494,6 +499,11 @@ public class Main extends javax.swing.JFrame {
         availableMovies.search(txtBuscadorDisponibles.getText());
         txtActualDisponibles.setText(availableMovies.current());
     }//GEN-LAST:event_btnBuscarDisponiblesActionPerformed
+
+    private void btnBuscarRentadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarRentadasActionPerformed
+        rentedMovies.search(txtBuscadorRentadas.getText());
+        txtActualRentadas.setText(rentedMovies.current());
+    }//GEN-LAST:event_btnBuscarRentadasActionPerformed
 
     /**
      * @param args the command line arguments

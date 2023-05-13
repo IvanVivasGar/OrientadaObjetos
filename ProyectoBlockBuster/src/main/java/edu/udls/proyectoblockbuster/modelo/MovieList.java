@@ -103,21 +103,21 @@ public class MovieList {
     public void search(String value){
         boolean found = false;
         int i = 0;
-        value = value.replaceAll("\\s", "").toLowerCase();
-        JOptionPane.showMessageDialog(null, value);
+        value = value.replaceAll(" ", "").toLowerCase();
         
+        //DECLARAMOS EL PRIMER NODO COMO EL ACTUAL PARA BUSCAR EN TODA LA LISTA
         this.current = this.first;
         do{
-            int positionComaId = this.current().replaceAll("\\s", "").indexOf(",");
-            int positionComaName = this.current().replaceAll("\\s", "").indexOf(",", positionComaId + 1);
-            if(this.current().replaceAll("\\s", "").toLowerCase().substring(0, positionComaId) == value || this.current().replaceAll("\\s", "").toLowerCase().substring(positionComaId + 1, positionComaName) == value){
+            String temporalMovieName = this.current.getMovieName().toLowerCase().replaceAll(",", "").replaceAll(" ", "");
+            String temporalMovieId = this.current.getMovieId().toLowerCase().replaceAll(",", "").replaceAll(" ", "");
+            if(temporalMovieName.equals(value) || temporalMovieId.equals(value)){
                 found = true;
                 JOptionPane.showMessageDialog(null, "Pelicula encontrada " + this.current.getMovieName());
             }else if(this.current.getNext() != null && found != true){
                 this.current = this.current.getNext();
             }
             i++;
-        }while(found == false || i < this.size);
+        }while(found == false && i < this.size());
     }
     
     public String enlist(MovieList list){
