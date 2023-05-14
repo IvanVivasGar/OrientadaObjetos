@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
  * @author Chaca
  */
 public class ArchiveLocations extends javax.swing.JFrame {
+    //SE DECLARAN DOS STRINGS CON PROTECCION PARA QUE SEAN ACCESADOS UNICAMENTE DESDE EL PAQUETE VISTA
     protected static String routeAvailableMovies = "";
     protected static String routeRentedMovies = "";
     
@@ -145,9 +146,14 @@ public class ArchiveLocations extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscadorPeliculasDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscadorPeliculasDisponiblesActionPerformed
+        //SE CREA UN OBJETO DE LA CLASE JFILECHOOSER
         JFileChooser objectFileChooser = new JFileChooser();
+        //SE UTILIZA LA FUNCION SHOWOPENDIALOG PARA PERMITIR AL USUARIO BUSCAR LA RUTA DEL ARCHIVO QUE DESEA ELEGIR
         objectFileChooser.showOpenDialog(null);
+        //SE OBTIENE LA RUTA CON LA FUNCION GETSELECTEDFILE Y SE CONVIERTE EN STRING PARA GUARDARSE EN LA VARIABLE
+        //ROUTEAVAILABLEMOVIES
         routeAvailableMovies = objectFileChooser.getSelectedFile().toString();
+        //SE DECLARA EL CONTENIDO DEL CAMPO DE TEXTO CON LA RUTA, PARA MOSTRARSELA AL USUARIO
         txtAvailableMovies.setText(routeAvailableMovies);
     }//GEN-LAST:event_buscadorPeliculasDisponiblesActionPerformed
 
@@ -159,9 +165,13 @@ public class ArchiveLocations extends javax.swing.JFrame {
     }//GEN-LAST:event_buscadorPeliculasRentadasActionPerformed
 
     private void btnReadyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadyActionPerformed
+        //SE REVISA QUE HAYA CONTENIDO EN LOS CAMPOS DE TEXTO, ESTO SIGNIFICARIA QUE HAY UNA RUTA ESTABLECIDA EN EL STRING
         if(txtAvailableMovies.getText() != null && txtRentedMovies != null){
+            //SE CREA UN OBJETO DE TIPO MAIN, ES DECIR UNA INTERFAZ PRINCIPAL
             Main interfazPrincipal = new Main();
+            //SE UTILIZA LA FUNCION SHOW PARA MOSTRAR LA INTERFAZ DEL OBJETO QUE CREAMOS DE LA CLASE MAIN
             interfazPrincipal.show();
+            //DE CIERRA LA INTERFAZ ACTUAL
             dispose();
         }
     }//GEN-LAST:event_btnReadyActionPerformed

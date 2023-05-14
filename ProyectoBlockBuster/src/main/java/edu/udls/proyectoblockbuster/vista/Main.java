@@ -9,17 +9,22 @@ import javax.swing.JOptionPane;
  */
 
 public class Main extends javax.swing.JFrame {
+    //CREAMOS DOS LISTAS, UNA PARA LAS PELICULAS RENTADAS Y OTRA PARA LAS PELICULAS DISPONIBLES
     MovieList availableMovies = new MovieList();
     MovieList rentedMovies = new MovieList();
     
     public Main() {
         initComponents();
+        //LEEMOS LOS ARCHIVOS Y LE PONEMOS EL CONTENIDO DE LAS LISTAS A LAS AREAS DE TEXTO EN LA INTERFAZ
         txaDisponibles.setText(ArchiveManager.leerArchivo(ArchiveLocations.routeAvailableMovies, availableMovies));
         txaRentadas.setText(ArchiveManager.leerArchivo(ArchiveLocations.routeRentedMovies, rentedMovies));
+        //AGREGAMOS LA CANTIDAD DE NODOS(PELICULAS) A LOS LABELS DE DISPONIBLESE Y RENTADAS
         lblCantidadDisponibles.setText(Integer.toString(availableMovies.size()));
         lblCantidadRentadas.setText(Integer.toString(rentedMovies.size()));
+        //DECLARAMOS EL NODO ACTUAL COMO EL PRIMER NODO
         availableMovies.current = availableMovies.first;
         rentedMovies.current = rentedMovies.first;
+        //ESTABLECEMOS EL CONTENIDO DEL TEXTO CON LA PELICULA ACTUAL
         txtActualDisponibles.setText(availableMovies.current());
         txtActualRentadas.setText(rentedMovies.current());
     }
@@ -415,11 +420,15 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInicioDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioDisponiblesActionPerformed
+        //AL DAR CLICK AL BOTON SE DECLARA EL NODO ACTUAL COMO EL PRIMERO Y SE MUESTRA EN EL CAMPO DE TEXTO
         availableMovies.current = availableMovies.first;
         txtActualDisponibles.setText(availableMovies.current());
     }//GEN-LAST:event_btnInicioDisponiblesActionPerformed
 
     private void btnAnteriorDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorDisponiblesActionPerformed
+        //AL DAR CLICK EN EL BOTON SE REVISA PRIMERO QUE EL NODO ACTUAL NO SEA EL PRIMERO, ES DECIR QUE HAYA OTRO NODO ANTERIOR
+        //PARA MOVERSE A ESE, TAMBIEN SE REVISA QUE EL TAMAÑO DE LA LISTA SEA MAYOT A 1, DE MANERA QUE SI EL USUARIO UTILIZA EL
+        //BOTON ANTERIOR PARA LLEGAR AL PRIMERO, NO SE PUEDA MOVER A UN NODO NULO
         if(availableMovies.first() != availableMovies.current() && availableMovies.size() > 1){
             availableMovies.current = availableMovies.current.getPrevious();
             txtActualDisponibles.setText(availableMovies.current());
@@ -427,6 +436,8 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAnteriorDisponiblesActionPerformed
 
     private void btnSiguienteDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteDisponiblesActionPerformed
+        //FUNCIONA DE LA MISMA MANERA QUE EL BOTON DE ANTERIOR, SOLO QUE REVISANDO QUE EL NODO ACTUAL NO SEA EL FINAL Y QUE EL
+        //NODO SIGUIENTE NO SEA NULO
         if(availableMovies.last() != availableMovies.current() && availableMovies.size() > 1){
             availableMovies.current = availableMovies.current.getNext();
             txtActualDisponibles.setText(availableMovies.current());
@@ -434,6 +445,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSiguienteDisponiblesActionPerformed
 
     private void btnFinDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinDisponiblesActionPerformed
+        //AL DAR CLICK AL BOTON SE DECLARA EL ULTIMO NODO COMO EL ACTUAL Y SE MUESTRA SU INFORMACION EN EL CAMPO DE TEXTO
         availableMovies.current = availableMovies.last;
         txtActualDisponibles.setText(availableMovies.current());
     }//GEN-LAST:event_btnFinDisponiblesActionPerformed
@@ -463,11 +475,15 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFinRentadasActionPerformed
 
     private void btnRentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentarActionPerformed
+        //LLAMO EL METODO MOVER DESDE LA LISTA DE PELICULAS DISPONIBLES
         availableMovies.move(rentedMovies);
+        //VUELVO A ENLISTAR LA LISTA DISPONIBLES Y RENTADAS Y EL STRING QUE DEVUELVEN LO DEFINO EN AMBAS AREAS
         txaDisponibles.setText(availableMovies.enlist(availableMovies));
         txaRentadas.setText(rentedMovies.enlist(rentedMovies));
+        //VUELVO A MOSTRAR LA CANTIDAD DE NODOS CON EL TAMAÑO DE LA LISTA ACTUALIZADO
         lblCantidadDisponibles.setText(Integer.toString(availableMovies.size()));
         lblCantidadRentadas.setText(Integer.toString(rentedMovies.size()));
+        //CHECA QUE AL MENOS HAYA ALGUN NODO PARA MOSTRAR EN EL CAMPO DE TEXTO, DE OTRA MANERA MUESTRA UN VALOR NULO
         if(availableMovies.size() > 0){
             txtActualDisponibles.setText(availableMovies.current());
             txtActualRentadas.setText(rentedMovies.current());
@@ -477,6 +493,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRentarActionPerformed
 
     private void btnDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverActionPerformed
+        //HACE EXACTAMENTE LO MISMO PERO CAMBIANDO DE LISTA
         rentedMovies.move(availableMovies);
         txaRentadas.setText(rentedMovies.enlist(rentedMovies));
         txaDisponibles.setText(availableMovies.enlist(availableMovies));
@@ -491,13 +508,20 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDevolverActionPerformed
 
     private void btnRentarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRentarTodoActionPerformed
+        //CHECA QUE HAYA AL MENOS UN NODO PARA MOVER
         if(availableMovies.size() > 0){
+            //LLAMA EL METODO MOVEALL DESDE LA LISTA DE PELICULAS DISPONIBLES
             availableMovies.moveAll(rentedMovies);
+            //DECLARA EL AREA DE TEXTO COMO NULO YA QUE LA LISTA NO TIENE NINGUN NODO PARA MOSTRAR
             txaDisponibles.setText(null);
+            //VUELVE A ENLISTAR Y MOSTRAR EL STRING QUE DEVUELVE EL METODO ENLIST DESDE LA LISTA DE RENTADAS
             txaRentadas.setText(rentedMovies.enlist(rentedMovies));
+            //ACTUALIZA EL LABEL CON LA CANTIDAD DE NODOS ACTUALIZADO DE CADA LISTA
             lblCantidadDisponibles.setText(Integer.toString(availableMovies.size()));
             lblCantidadRentadas.setText(Integer.toString(rentedMovies.size()));
+            //DECLARA EL CAMPO DE TEXTO DE LOS DISPONIBLES COMO NULO YA QUE NO TIENE NODOS
             txtActualDisponibles.setText(null);
+            //DECLARA EL CAMPO DE TEXTO DE LAS RENTADAS CON EL NODO ACTUAL
             txtActualRentadas.setText(rentedMovies.current());
         }
     }//GEN-LAST:event_btnRentarTodoActionPerformed
@@ -515,7 +539,10 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDevolverTodoActionPerformed
 
     private void btnBuscarDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarDisponiblesActionPerformed
+        //LLAMA AL METODO DESDE LA LISTA DE DISPONIBLES, ENVIANDOLE  EL CONTENIDO DEL CAMPO DE TEXTO DEL BUSCADOR
         availableMovies.search(txtBuscadorDisponibles.getText());
+        //EL METODO SE ENCARGA DE ACTUALIZAR EL NODO ACTUAL CON LO QUE ENCAJE CON LO QUE EL USUARIO INGRESO EN EL 
+        //CAMPO DE TEXTO DEL BUSCADOR, LUEGO SE ACTUALIZA EL CONTENIDO DEL CAMPO DE TEXTO DEL NODO ACTUAL
         txtActualDisponibles.setText(availableMovies.current());
     }//GEN-LAST:event_btnBuscarDisponiblesActionPerformed
 
@@ -525,8 +552,11 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarRentadasActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        //SE LLAMA AL METODO DEL ARCHIVE MANAGER QUE SE ENCARGA DE REESCRIBIR LOS ARCHIVOS, TANTO DE RENTADAS COMO
+        //DE LAS PELICULAS DISPONIBLES
         ArchiveManager.reescribirArchivo(ArchiveLocations.routeAvailableMovies, availableMovies);
         ArchiveManager.reescribirArchivo(ArchiveLocations.routeRentedMovies, rentedMovies);
+        //CIERRA LA INTERFAZ ACTUAL Y SE ACABA EL PROGRAMA
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
