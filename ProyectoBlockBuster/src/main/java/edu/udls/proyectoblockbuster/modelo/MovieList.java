@@ -149,32 +149,38 @@ public class MovieList {
     
     public void search(String value){
         //EL PARAMETRO TRAE EL CONTENIDO DEL CAMPO DE TEXTO DEL BUSCADOR
-        //DECLARAMOS UN BOOLEANO PARA LA BUSQUEDA DEL CONTENIDO DEL NODO
-        boolean found = false;
-        //DECLARAMOS UN CONTADOR PARA QUE NO SOBREPASE EL TAMAÑO DE LA LISTA
-        int i = 0;
-        //QUITAMOS LOS ESPACIOS Y LLEVAMOS EL CONTENIDO A MINUSCULAS
-        value = value.replaceAll(" ", "").toLowerCase();
-        
-        //DECLARAMOS EL PRIMER NODO COMO EL ACTUAL PARA BUSCAR EN TODA LA LISTA
-        this.current = this.first;
-        //EL CICLO SE ASEGURA DE SEGUIR SI NO SE HA ENCONTRADO LA PELICULA Y SI EL CONTADOR ES MENOR AL TAMAÑO DE LA LISTA
-        do{
-            //SE GUARDAN EL CONTENIDO SIN ESPACIOS Y SIN COMAS DEL ID Y EL NOMBRE DEL NODO ACTUAL EN UNA VARIABLE TEMPORAL
-            String temporalMovieName = this.current.getMovieName().toLowerCase().replaceAll(",", "").replaceAll(" ", "");
-            String temporalMovieId = this.current.getMovieId().toLowerCase().replaceAll(",", "").replaceAll(" ", "");
-            //SE UTILIZA LA FUNCION EQUALS PARA QUE COMPARE LOS VALORES DE LOS STRING Y NO LOS OBJETOS COMO TAL
-            if(temporalMovieName.equals(value) || temporalMovieId.equals(value)){
-                found = true;
-                JOptionPane.showMessageDialog(null, "Pelicula encontrada " + this.current.getMovieName());
-            }
-            //SE REVISA QUE EL BOLEANO NO HAYA CAMBIADO A TRUE Y QUE EL SIGUIENTE NODO AL ACTUAL NO SEA NULO
-            else if(this.current.getNext() != null && found != true){
-                //CAMBIA EL NODO ACTUAL AL SIGUIENTE
-                this.current = this.current.getNext();
-            }
-            i++;
-        }while(found == false && i < this.size());
+        if(this.size > 0){
+            //EL PARAMETRO TRAE EL CONTENIDO DEL CAMPO DE TEXTO DEL BUSCADOR
+            //DECLARAMOS UN BOOLEANO PARA LA BUSQUEDA DEL CONTENIDO DEL NODO
+            boolean found = false;
+            //DECLARAMOS UN CONTADOR PARA QUE NO SOBREPASE EL TAMAÑO DE LA LISTA
+            int i = 0;
+            //QUITAMOS LOS ESPACIOS Y LLEVAMOS EL CONTENIDO A MINUSCULAS
+            value = value.replaceAll(" ", "").toLowerCase();
+
+            //DECLARAMOS EL PRIMER NODO COMO EL ACTUAL PARA BUSCAR EN TODA LA LISTA
+            this.current = this.first;
+            //EL CICLO SE ASEGURA DE SEGUIR SI NO SE HA ENCONTRADO LA PELICULA Y SI EL CONTADOR ES MENOR AL TAMAÑO DE LA LISTA
+            do{
+                //SE GUARDAN EL CONTENIDO SIN ESPACIOS Y SIN COMAS DEL ID Y EL NOMBRE DEL NODO ACTUAL EN UNA VARIABLE TEMPORAL
+                String temporalMovieName = this.current.getMovieName().toLowerCase().replaceAll(",", "").replaceAll(" ", "");
+                String temporalMovieId = this.current.getMovieId().toLowerCase().replaceAll(",", "").replaceAll(" ", "");
+                //SE UTILIZA LA FUNCION EQUALS PARA QUE COMPARE LOS VALORES DE LOS STRING Y NO LOS OBJETOS COMO TAL
+                if(temporalMovieName.equals(value) || temporalMovieId.equals(value)){
+                    found = true;
+                    JOptionPane.showMessageDialog(null, "Pelicula encontrada " + this.current.getMovieName());
+                }
+                //SE REVISA QUE EL BOLEANO NO HAYA CAMBIADO A TRUE Y QUE EL SIGUIENTE NODO AL ACTUAL NO SEA NULO
+                else if(this.current.getNext() != null && found != true){
+                    //CAMBIA EL NODO ACTUAL AL SIGUIENTE
+                    this.current = this.current.getNext();
+                }
+                i++;
+            }while(found == false && i < this.size());
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "No hay peliculas para buscar");
+        }
     }
     
     public String enlist(MovieList list){

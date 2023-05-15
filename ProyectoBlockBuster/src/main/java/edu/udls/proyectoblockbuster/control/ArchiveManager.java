@@ -25,7 +25,7 @@ public class ArchiveManager{
             String line = "";
             while((line = br.readLine()) != null){
                 content += line + "\n";
-                //UTILIZAMO EL INFEX OF PARA OBTENER LA POSICION DE LAS COMAS Y DESPUES DIVIDIR LA LINEA PARA AGREGAR CADA DIVISION A CADA CAMPO
+                //UTILIZAMOS EL INFEX OF PARA OBTENER LA POSICION DE LAS COMAS Y DESPUES DIVIDIR LA LINEA PARA AGREGAR CADA DIVISION A CADA CAMPO
                 int positionComaId = line.indexOf(",");
                 int positionComaName = line.indexOf(",", positionComaId + 1);
                 int positionComaGenre = line.indexOf(",", positionComaName + 1);

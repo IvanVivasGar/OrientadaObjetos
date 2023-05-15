@@ -547,12 +547,23 @@ public class Main extends javax.swing.JFrame {
         availableMovies.search(txtBuscadorDisponibles.getText());
         //EL METODO SE ENCARGA DE ACTUALIZAR EL NODO ACTUAL CON LO QUE ENCAJE CON LO QUE EL USUARIO INGRESO EN EL 
         //CAMPO DE TEXTO DEL BUSCADOR, LUEGO SE ACTUALIZA EL CONTENIDO DEL CAMPO DE TEXTO DEL NODO ACTUAL
-        txtActualDisponibles.setText(availableMovies.current());
+        //LA CONDICIONAL SE ASEGURA DE QUE HAYA CONTENIDO DE UN NODO PARA MOSTRAR EN EL CAMPO DE TEXTO
+        if(availableMovies.current != null){
+            txtActualDisponibles.setText(availableMovies.current());
+        }
+        else{
+            txtActualDisponibles.setText(null);
+        }
     }//GEN-LAST:event_btnBuscarDisponiblesActionPerformed
 
     private void btnBuscarRentadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarRentadasActionPerformed
         rentedMovies.search(txtBuscadorRentadas.getText());
-        txtActualRentadas.setText(rentedMovies.current());
+        if(rentedMovies.current != null){
+            txtActualRentadas.setText(rentedMovies.current());
+        }
+        else{
+            txtActualRentadas.setText(null);
+        }
     }//GEN-LAST:event_btnBuscarRentadasActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
