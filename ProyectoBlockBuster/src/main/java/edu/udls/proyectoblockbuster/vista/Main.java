@@ -433,7 +433,7 @@ public class Main extends javax.swing.JFrame {
         //AL DAR CLICK EN EL BOTON SE REVISA PRIMERO QUE EL NODO ACTUAL NO SEA EL PRIMERO, ES DECIR QUE HAYA OTRO NODO ANTERIOR
         //PARA MOVERSE A ESE, TAMBIEN SE REVISA QUE EL TAMAÑO DE LA LISTA SEA MAYOT A 1, DE MANERA QUE SI EL USUARIO UTILIZA EL
         //BOTON ANTERIOR PARA LLEGAR AL PRIMERO, NO SE PUEDA MOVER A UN NODO NULO
-        if(availableMovies.first() != availableMovies.current() && availableMovies.size() > 1){
+        if(availableMovies.first != availableMovies.current && availableMovies.size() > 1){
             availableMovies.current = availableMovies.current.getPrevious();
             txtActualDisponibles.setText(availableMovies.current());
         }
@@ -442,7 +442,7 @@ public class Main extends javax.swing.JFrame {
     private void btnSiguienteDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteDisponiblesActionPerformed
         //FUNCIONA DE LA MISMA MANERA QUE EL BOTON DE ANTERIOR, SOLO QUE REVISANDO QUE EL NODO ACTUAL NO SEA EL FINAL Y QUE EL
         //NODO SIGUIENTE NO SEA NULO
-        if(availableMovies.last() != availableMovies.current() && availableMovies.size() > 1){
+        if(availableMovies.last != availableMovies.current && availableMovies.size() > 1){
             availableMovies.current = availableMovies.current.getNext();
             txtActualDisponibles.setText(availableMovies.current());
         }
@@ -460,14 +460,14 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInicioRentadasActionPerformed
 
     private void btnAnteriorRentadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorRentadasActionPerformed
-        if(rentedMovies.first() != rentedMovies.current() && rentedMovies.size() > 1){
+        if(rentedMovies.first != rentedMovies.current && rentedMovies.size() > 1){
             rentedMovies.current = rentedMovies.current.getPrevious();
             txtActualRentadas.setText(rentedMovies.current());
         }
     }//GEN-LAST:event_btnAnteriorRentadasActionPerformed
 
     private void btnSiguienteRentadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteRentadasActionPerformed
-        if(rentedMovies.last() != rentedMovies.current() && rentedMovies.size() > 1){
+        if(rentedMovies.last != rentedMovies.current && rentedMovies.size() > 1){
             rentedMovies.current = rentedMovies.current.getNext();
             txtActualRentadas.setText(rentedMovies.current());
         }

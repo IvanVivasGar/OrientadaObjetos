@@ -177,6 +177,11 @@ public class MovieList {
                 }
                 i++;
             }while(found == false && i < this.size());
+            
+            //CONDICIONAL QUE LE INFORMA AL USUARIO EN CASO DE QUE LA PELICULA QUE INGRESO NO EXISTE EN LA LISTA
+            if(found == false){
+                JOptionPane.showMessageDialog(null, "No existe la pelicula que buscas");
+            }
         }
         else{
             JOptionPane.showMessageDialog(null, "No hay peliculas para buscar");
