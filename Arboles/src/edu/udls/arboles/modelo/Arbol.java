@@ -9,8 +9,8 @@ package edu.udls.arboles.modelo;
  * @author Ivan
  */
 public class Arbol {
-    Nodo raiz;
-    int tamano;
+    public Nodo raiz;
+    public int tamano;
     
     public Arbol(){}
     
@@ -28,6 +28,7 @@ public class Arbol {
         nuevoDato.setValor(valor);
         if(this.raiz == null){
             this.raiz = nuevoDato;
+            this.tamano = 1;
         }
         else insertar(nuevoDato, this.raiz);
     }
@@ -36,34 +37,34 @@ public class Arbol {
         if(nuevoDato.getValor() < padre.getValor()){
             if(padre.getIzquierda() == null){
                 padre.setIzquerda(nuevoDato);
+                this.tamano++;
             }else insertar(nuevoDato, padre.getIzquierda());
         }else{
             if(padre.getDerecha() == null){
                 padre.setDerecha(nuevoDato);
+                this.tamano++;
             }else insertar(nuevoDato, padre.getDerecha());
         }
     }
     
     // R I D
     public String imprimirPre(Nodo n){
-        if(n != null) return " " + n.getValor();
-        imprimirPre(n.getIzquierda());
-        imprimirPre(n.getDerecha());
-        return "";
+        String msj = "";
+        if(n != null) msj = " " + n.getValor() + imprimirPre(n.getIzquierda()) + imprimirPre(n.getDerecha());
+        return msj;
     }
     
     // I D R
     public String imprimirPost(Nodo n){
-        imprimirPost(n.getIzquierda());
-        imprimirPost(n.getDerecha());
-        if(n != null) return " " + n.getValor();
-        return "";
+        String msj = "";
+        if(n != null) msj = imprimirPost(n.getIzquierda()) + imprimirPost(n.getDerecha()) + " " + n.getValor();
+        return msj;
     }
     
     // I R D
     public String imprimirIn(Nodo n){
-        imprimirIn(n.getIzquierda());
-        if(n != null) return " " + n.getValor();
-        imprimirIn(n.getDerecha());
+        String msj = "";
+        if(n != null) msj = imprimirIn(n.getIzquierda()) + " " + n.getValor() + imprimirIn(n.getDerecha());
+        return msj;
     }
 }
